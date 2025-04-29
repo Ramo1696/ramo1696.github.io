@@ -1,13 +1,14 @@
 {
   "name": "P2P Profit",
-  "short_name": "P2P",
-  "start_url": "https://ramo1696.github.io/P2P-Profit/index.html",
-  "scope": "https://ramo1696.github.io/P2P-Profit/",
-  "display": "standalone",
-  "background_color": "#000000",
   "theme_color": "#000000",
-  "description": "P2P Profit — простой и быстрый калькулятор для отслеживания вашей торговой прибыли.",
-  "icons": [
+  "background_color": "#000000",
+  "short_name": "P2P",
+  "id": "/",
+  "description": "P2P Профит — это простой калькулятор для отслеживания вашей прибыли от торговли.",
+  "categories": [
+    "finance"
+  ]
+}
     {
       "src": "android-launchericon-512-512.png",
       "sizes": "512x512",
