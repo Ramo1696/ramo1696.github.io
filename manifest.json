@@ -1,0 +1,11 @@
+{
+  "name": "P2P Profit",
+  "theme_color": "#000000",
+  "background_color": "#000000",
+  "short_name": "P2P",
+  "id": "/",
+  "description": "P2P Профит — это простой калькулятор для отслеживания вашей прибыли от торговли.",
+  "categories": [
+    "finance"
+  ]
+}
