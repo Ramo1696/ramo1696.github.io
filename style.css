@@ -59,3 +59,10 @@ button {
 .results-box p span {
   color: #FFD700;
 }
+#autoRate {
+  width: 18px;
+  height: 18px;
+  accent-color: #FFD700;
+  vertical-align: middle;
+  margin-right: 6px;
+}
