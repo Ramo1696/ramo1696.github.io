@@ -36,48 +36,43 @@
       <input type="number" id="amount" placeholder="например, 1000" />
     </div>
 
-    <div class="form-row">
-      <div class="form-group">
+    <div class="form-group rate-row">
+      <div>
         <label>Курс покупки</label>
         <input type="number" id="buyRate" />
       </div>
-      <div class="form-group">
+      <div>
         <label>Курс продажи</label>
         <input type="number" id="sellRate" />
       </div>
     </div>
 
-    <div class="form-row">
-      <div class="form-group">
+    <div class="form-group rate-row">
+      <div>
         <label>Комиссия покупки (%)</label>
         <input type="number" id="buyFee" value="0" />
       </div>
-      <div class="form-group">
+      <div>
         <label>Комиссия продажи (%)</label>
         <input type="number" id="sellFee" value="0" />
       </div>
     </div>
 
-    <div class="form-group auto-rate">
+    <div class="form-group">
       <label>
         <input type="checkbox" id="autoRate" />
         Автоматический курс
       </label>
     </div>
 
-    <button id="calculate">Рассчитать</button>
+    <button id="calculateBtn">Рассчитать</button>
 
-    <div class="ad-banner">Реклама от Google<br><span>Благодаря рекламе приложение остаётся бесплатным</span></div>
-
-    <div class="results">
-      <p id="buyRateText">Курс покупки: -</p>
-      <p id="sellRateText">Курс продажи: -</p>
-      <p id="spreadNoFeeText">Спред без комиссии: - %</p>
-      <p id="spreadWithFeeText">Спред с комиссией: - %</p>
-      <p id="spentText">Потрачено: -</p>
-      <p id="receivedText">Получено: -</p>
-      <p id="profitText">Чистая прибыль: -</p>
+    <div id="ad-banner">
+      <p>Реклама от Google</p>
+      <small>Благодаря рекламе приложение остаётся бесплатным</small>
     </div>
+
+    <div id="result"></div>
   </div>
 </body>
 </html>
