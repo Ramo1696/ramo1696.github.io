@@ -36,44 +36,45 @@
       <input type="number" id="amount" placeholder="например, 1000" />
     </div>
 
-    <div class="form-row">
-      <div class="form-group half">
+    <div class="form-group auto-row">
+      <label>Автоматический курс</label>
+      <input type="checkbox" id="autoRate" />
+    </div>
+
+    <div class="double-row">
+      <div class="form-group">
         <label>Курс покупки</label>
         <input type="number" id="buyRate" />
       </div>
-      <div class="form-group half">
+      <div class="form-group">
         <label>Курс продажи</label>
         <input type="number" id="sellRate" />
       </div>
     </div>
 
-    <div class="form-row">
-      <div class="form-group half">
+    <div class="double-row">
+      <div class="form-group">
         <label>Комиссия покупки (%)</label>
         <input type="number" id="buyFee" value="0" />
       </div>
-      <div class="form-group half">
+      <div class="form-group">
         <label>Комиссия продажи (%)</label>
         <input type="number" id="sellFee" value="0" />
       </div>
     </div>
 
-    <div class="form-group checkbox-row">
-      <input type="checkbox" id="autoRate" />
-      <label for="autoRate">Автоматический курс</label>
-    </div>
-
     <button onclick="calculate()">Рассчитать</button>
-    <div class="ad-banner">Реклама от Google</div>
 
-    <div id="result" class="result">
-      <p>Курс покупки: <span id="r-buy">-</span></p>
-      <p>Курс продажи: <span id="r-sell">-</span></p>
-      <p>Спред без комиссии: <span id="r-spread">-</span></p>
-      <p>Спред с комиссией: <span id="r-spread-fee">-</span></p>
-      <p>Потрачено: <span id="r-spent">-</span></p>
-      <p>Получено: <span id="r-received">-</span></p>
-      <p>Чистая прибыль: <span id="r-profit">-</span></p>
+    <div class="ad-banner">Реклама от Google<br><span>Благодаря рекламе приложение остаётся бесплатным</span></div>
+
+    <div class="result" id="result">
+      <p>Курс покупки: <span id="resultBuyRate">-</span></p>
+      <p>Курс продажи: <span id="resultSellRate">-</span></p>
+      <p>Спред без комиссии: <span id="resultSpread">-</span> %</p>
+      <p>Спред с комиссией: <span id="resultSpreadNet">-</span> %</p>
+      <p>Потрачено: <span id="resultSpent">-</span></p>
+      <p>Получено: <span id="resultReceived">-</span></p>
+      <p>Чистая прибыль: <span id="resultProfit">-</span></p>
     </div>
   </div>
 </body>
