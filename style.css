@@ -3,7 +3,7 @@ body {
   color: white;
   font-family: sans-serif;
   margin: 0;
-  padding: 0;
+  padding: 0 15px;
 }
 
 #container {
@@ -40,54 +40,56 @@ button {
 }
 
 .form-group {
-  margin-bottom: 15px;
+  margin-bottom: 20px;
 }
 
-.auto-row {
+.dual {
   display: flex;
-  justify-content: space-between;
-  align-items: center;
-}
-
-.auto-row label {
-  margin-right: 10px;
-}
-
-.double-row {
-  display: flex;
-  justify-content: space-between;
   gap: 10px;
 }
 
-.double-row .form-group {
+.dual > div {
   flex: 1;
 }
 
+.inline-check {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-top: -10px;
+}
+
+.inline-check input[type="checkbox"] {
+  width: 18px;
+  height: 18px;
+  accent-color: #FFD700;
+}
+
 .ad-banner {
-  background-color: #2a2a2a;
-  color: #ccc;
-  font-size: 14px;
-  text-align: center;
+  background-color: #333;
   padding: 10px;
+  text-align: center;
   margin-top: 20px;
   border-radius: 8px;
+  font-size: 14px;
+  color: #ccc;
 }
 
 .ad-banner span {
-  display: block;
   font-size: 12px;
-  margin-top: 5px;
+  color: #999;
 }
 
-.result {
+.result-box {
   margin-top: 20px;
+  font-size: 15px;
 }
 
-.result p {
+.result-box p {
   margin: 5px 0;
 }
 
-.result span {
-  color: #FFD700;
+.result-box span {
   font-weight: bold;
+  color: #FFD700;
 }
