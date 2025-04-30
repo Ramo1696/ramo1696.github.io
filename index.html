@@ -1,28 +1,17 @@
 <!DOCTYPE html>
 <html lang="ru">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>P2P Profit</title>
-
-  <!-- Подключение manifest.json для PWA -->
-  <link rel="manifest" href="/manifest.json">
-
-  <!-- Иконка сайта -->
-  <link rel="icon" type="image/png" href="/android-launchericon-512-512.png">
-
-  <!-- Стили -->
-  <link rel="stylesheet" href="style.css" />
-
-  <!-- Скрипты -->
-  <script defer src="exchange-rate.js"></script>
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
   <div id="container">
     <h1>P2P Profit</h1>
 
     <div class="form-group">
-      <label>Криптовалюта</label>
+      <label for="crypto">Криптовалюта</label>
       <select id="crypto">
         <option value="tether">USDT</option>
         <option value="usd-coin">USDC</option>
@@ -32,57 +21,64 @@
     </div>
 
     <div class="form-group">
-      <label>Фиат</label>
+      <label for="fiat">Фиат</label>
       <select id="fiat">
         <option value="gel">GEL</option>
         <option value="usd">USD</option>
-        <option value="rub">RUB</option>
         <option value="eur">EUR</option>
+        <option value="rub">RUB</option>
       </select>
     </div>
 
     <div class="form-group">
-      <label>Сумма (в криптовалюте)</label>
-      <input type="number" id="amount" placeholder="например, 1000" />
+      <label for="amount">Сумма (в криптовалюте)</label>
+      <input id="amount" type="number" placeholder="например, 1000" />
     </div>
 
-    <div class="form-group toggle">
-      <label><input type="checkbox" id="autoToggle" checked> Автоматический курс</label>
+    <div class="form-group inline-checkbox">
+      <input id="auto-rate" type="checkbox" />
+      <label for="auto-rate">Автоматический курс</label>
     </div>
 
-    <div class="form-group-row">
+    <div class="form-group group-inline">
       <div>
-        <label>Курс покупки</label>
-        <input type="number" id="buyRate" disabled />
+        <label for="buy-rate">Курс покупки</label>
+        <input id="buy-rate" type="number" step="any" />
       </div>
       <div>
-        <label>Курс продажи</label>
-        <input type="number" id="sellRate" disabled />
-      </div>
-    </div>
-
-    <div class="form-group-row">
-      <div>
-        <label>Комиссия покупки (%)</label>
-        <input type="number" id="buyFee" placeholder="0" />
-      </div>
-      <div>
-        <label>Комиссия продажи (%)</label>
-        <input type="number" id="sellFee" placeholder="0" />
+        <label for="sell-rate">Курс продажи</label>
+        <input id="sell-rate" type="number" step="any" />
       </div>
     </div>
 
-    <button onclick="calculate()">Рассчитать</button>
+    <div class="form-group group-inline">
+      <div>
+        <label for="buy-fee">Комиссия покупки (%)</label>
+        <input id="buy-fee" type="number" step="any" value="0" />
+      </div>
+      <div>
+        <label for="sell-fee">Комиссия продажи (%)</label>
+        <input id="sell-fee" type="number" step="any" value="0" />
+      </div>
+    </div>
 
-    <div id="result-card">
-      <p><strong>Курс покупки:</strong> <span id="resBuyRate">-</span></p>
-      <p><strong>Курс продажи:</strong> <span id="resSellRate">-</span></p>
-      <p><strong>Спред без комиссии:</strong> <span id="spreadRaw">-</span></p>
-      <p><strong>Спред с комиссией:</strong> <span id="spreadNet">-</span></p>
-      <p><strong>Потрачено:</strong> <span id="spent">-</span></p>
-      <p><strong>Получено:</strong> <span id="received">-</span></p>
-      <p><strong>Чистая прибыль:</strong> <span id="netProfit" class="profit">-</span></p>
+    <button onclick="calculateProfit()">Рассчитать</button>
+
+    <div class="banner">
+      Реклама от Google
+    </div>
+
+    <div id="result">
+      <p>Курс покупки: <span id="display-buy-rate">-</span></p>
+      <p>Курс продажи: <span id="display-sell-rate">-</span></p>
+      <p>Спред без комиссии: <span id="display-spread">-</span></p>
+      <p>Спред с комиссией: <span id="display-net-spread">-</span></p>
+      <p>Потрачено: <span id="spent">-</span></p>
+      <p>Получено: <span id="received">-</span></p>
+      <p>Чистая прибыль: <span id="profit">-</span></p>
     </div>
   </div>
+
+  <script src="exchange-rate.js"></script>
 </body>
 </html>
