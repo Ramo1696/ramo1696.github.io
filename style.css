@@ -3,7 +3,7 @@ body {
   color: white;
   font-family: sans-serif;
   margin: 0;
-  padding: 0 15px;
+  padding: 0;
 }
 
 #container {
@@ -18,42 +18,14 @@ h1 {
   margin-bottom: 30px;
 }
 
-label {
-  display: block;
-  margin-bottom: 5px;
-  font-weight: bold;
-}
-
 input, select {
   width: 100%;
   padding: 10px;
   margin-top: 5px;
-  margin-bottom: 15px;
   border: none;
   border-radius: 8px;
   background-color: #1e1e1e;
   color: white;
-}
-
-.form-row {
-  display: flex;
-  justify-content: space-between;
-  gap: 10px;
-}
-
-.form-group.half {
-  flex: 1;
-}
-
-.checkbox-row {
-  display: flex;
-  align-items: center;
-  margin-bottom: 15px;
-}
-
-.checkbox-row label {
-  margin-left: 10px;
-  font-weight: normal;
 }
 
 button {
@@ -64,25 +36,51 @@ button {
   border: none;
   border-radius: 8px;
   font-weight: bold;
-  margin-top: 10px;
+  margin-top: 20px;
+}
+
+.form-group {
+  margin-bottom: 15px;
+}
+
+.auto-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.auto-row label {
+  margin-right: 10px;
+}
+
+.double-row {
+  display: flex;
+  justify-content: space-between;
+  gap: 10px;
+}
+
+.double-row .form-group {
+  flex: 1;
 }
 
 .ad-banner {
-  margin-top: 15px;
-  padding: 10px;
-  text-align: center;
   background-color: #2a2a2a;
-  border-radius: 8px;
-  font-size: 14px;
   color: #ccc;
+  font-size: 14px;
+  text-align: center;
+  padding: 10px;
+  margin-top: 20px;
+  border-radius: 8px;
+}
+
+.ad-banner span {
+  display: block;
+  font-size: 12px;
+  margin-top: 5px;
 }
 
 .result {
-  background-color: #1e1e1e;
   margin-top: 20px;
-  border-radius: 10px;
-  padding: 15px;
-  font-size: 15px;
 }
 
 .result p {
@@ -91,4 +89,5 @@ button {
 
 .result span {
   color: #FFD700;
+  font-weight: bold;
 }
