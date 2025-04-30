@@ -1,0 +1,61 @@
+
+body {
+  background-color: #121212;
+  color: white;
+  font-family: sans-serif;
+  margin: 0;
+  padding: 0 15px;
+}
+#container {
+  max-width: 420px;
+  margin: 0 auto;
+  padding: 20px;
+}
+h1 {
+  color: #FFD700;
+  text-align: center;
+  margin-bottom: 30px;
+}
+input, select {
+  width: 100%;
+  padding: 10px;
+  margin-top: 5px;
+  border: none;
+  border-radius: 8px;
+  background-color: #1e1e1e;
+  color: white;
+}
+button {
+  background-color: #FFD700;
+  color: black;
+  padding: 12px;
+  width: 100%;
+  border: none;
+  border-radius: 8px;
+  font-weight: bold;
+  margin-top: 20px;
+}
+.form-group {
+  margin-bottom: 20px;
+}
+.auto-rate label {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.ad-banner {
+  background-color: #2e2e2e;
+  padding: 10px;
+  border-radius: 8px;
+  margin-top: 15px;
+  text-align: center;
+}
+.results-box {
+  margin-top: 20px;
+}
+.results-box p {
+  margin: 4px 0;
+}
+.results-box p span {
+  color: #FFD700;
+}
