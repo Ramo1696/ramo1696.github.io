@@ -1,68 +1,56 @@
-document.addEventListener("DOMContentLoaded", function () {
-  const calculateBtn = document.getElementById("calculate");
-  const resetBtn = document.getElementById("reset");
-  const autoRateCheckbox = document.getElementById("autoRate");
+async function fetchExchangeRate(crypto, fiat) {
+  try {
+    const response = await fetch(`https://api.coingecko.com/api/v3/simple/price?ids=${crypto}&vs_currencies=${fiat}`);
+    const data = await response.json();
+    return data[crypto][fiat];
+  } catch (error) {
+    console.error("Ошибка при получении курса:", error);
+    return null;
+  }
+}
 
-  function parseValue(input) {
-    const value = parseFloat(input.value.replace(",", "."));
-    return isNaN(value) ? null : value;
+document.getElementById("autoRate").addEventListener("change", async function () {
+  const isChecked = this.checked;
+  const crypto = document.getElementById("crypto").value;
+  const fiat = document.getElementById("fiat").value;
+
+  if (isChecked) {
+    const rate = await fetchExchangeRate(crypto, fiat);
+    if (rate) {
+      document.getElementById("buyRate").value = rate;
+      document.getElementById("sellRate").value = rate;
+    }
+  } else {
+    document.getElementById("buyRate").value = "";
+    document.getElementById("sellRate").value = "";
+  }
+});
+
+document.getElementById("calculateBtn").addEventListener("click", function () {
+  const amount = parseFloat(document.getElementById("amount").value);
+  const buyRate = parseFloat(document.getElementById("buyRate").value);
+  const sellRate = parseFloat(document.getElementById("sellRate").value);
+  const buyFee = parseFloat(document.getElementById("buyFee").value) || 0;
+  const sellFee = parseFloat(document.getElementById("sellFee").value) || 0;
+
+  if (isNaN(amount) || isNaN(buyRate) || isNaN(sellRate)) {
+    alert("Пожалуйста, заполните все поля корректно.");
+    return;
   }
 
-  function updateResult(content) {
-    document.getElementById("result").innerHTML = content;
-  }
+  const spent = amount * buyRate;
+  const received = amount * sellRate * (1 - sellFee / 100);
+  const netProfit = received - spent;
+  const spread = ((sellRate - buyRate) / buyRate) * 100;
+  const spreadWithFees = ((received - spent) / spent) * 100;
 
-  calculateBtn.addEventListener("click", async function () {
-    const crypto = document.getElementById("crypto").value;
-    const fiat = document.getElementById("fiat").value;
-    const amount = parseValue(document.getElementById("amount"));
-    const buyRateInput = document.getElementById("buyRate");
-    const sellRateInput = document.getElementById("sellRate");
-    const buyFee = parseValue(document.getElementById("buyFee")) || 0;
-    const sellFee = parseValue(document.getElementById("sellFee")) || 0;
-
-    let buyRate = parseValue(buyRateInput);
-    let sellRate = parseValue(sellRateInput);
-
-    if (autoRateCheckbox.checked) {
-      try {
-        const res = await fetch(`https://api.coingecko.com/api/v3/simple/price?ids=${crypto}&vs_currencies=${fiat}`);
-        const data = await res.json();
-        const rate = data[crypto][fiat];
-        buyRate = sellRate = rate;
-        buyRateInput.value = rate;
-        sellRateInput.value = rate;
-      } catch (e) {
-        updateResult("<span style='color:red;'>Ошибка загрузки курса</span>");
-        return;
-      }
-    }
-
-    if (amount === null || buyRate === null || sellRate === null) {
-      updateResult("<span style='color:red;'>Пожалуйста, введите корректные значения</span>");
-      return;
-    }
-
-    const spent = amount * buyRate * (1 + buyFee / 100);
-    const received = amount * sellRate * (1 - sellFee / 100);
-    const profit = received - spent;
-
-    const spreadNoFee = ((sellRate - buyRate) / buyRate) * 100;
-    const spreadWithFee = ((received - spent) / spent) * 100;
-
-    updateResult(`
-      <p>Курс покупки: <span class="value">${buyRate.toFixed(2)}</span></p>
-      <p>Курс продажи: <span class="value">${sellRate.toFixed(2)}</span></p>
-      <p>Спред без комиссии: <span class="value">${spreadNoFee.toFixed(2)}%</span></p>
-      <p>Спред с комиссией: <span class="value">${spreadWithFee.toFixed(2)}%</span></p>
-      <p>Потрачено: <span class="value">${spent.toFixed(2)}</span></p>
-      <p>Получено: <span class="value">${received.toFixed(2)}</span></p>
-      <p>Чистая прибыль: <span class="value">${profit.toFixed(2)}</span></p>
-    `);
-  });
-
-  resetBtn?.addEventListener("click", () => {
-    document.querySelectorAll("input").forEach((input) => (input.value = ""));
-    updateResult("");
-  });
+  document.getElementById("result").innerHTML = `
+    <p>Курс покупки: ${buyRate.toFixed(2)}</p>
+    <p>Курс продажи: ${sellRate.toFixed(2)}</p>
+    <p>Спред без комиссий: ${spread.toFixed(2)} %</p>
+    <p>Спред с комиссией: ${spreadWithFees.toFixed(2)} %</p>
+    <p>Потрачено: ${spent.toFixed(2)}</p>
+    <p>Получено: ${received.toFixed(2)}</p>
+    <p>Чистая прибыль: ${netProfit.toFixed(2)}</p>
+  `;
 });
