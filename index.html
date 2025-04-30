@@ -2,13 +2,13 @@
 <html lang="ru">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>P2P Profit</title>
-  <link rel="stylesheet" href="style.css"/>
+  <link rel="stylesheet" href="style.css" />
   <script defer src="exchange-rate.js"></script>
 </head>
 <body>
-  <div class="container">
+  <div id="container">
     <h1>P2P Profit</h1>
 
     <div class="form-group">
@@ -33,48 +33,47 @@
 
     <div class="form-group">
       <label>Сумма (в криптовалюте)</label>
-      <input type="number" id="amount" placeholder="например, 1000"/>
+      <input type="number" id="amount" placeholder="например, 1000" />
     </div>
 
-    <div class="auto-rate">
-      <input type="checkbox" id="autoRate"/>
-      <label for="autoRate">Автоматический курс</label>
+    <div class="form-group auto-rate">
+      <label><input type="checkbox" id="autoRate" /> Автоматический курс</label>
     </div>
 
-    <div class="row">
-      <div class="form-group">
-        <label>Курс покупки</label>
+    <div class="form-group-row">
+      <div class="form-group-half">
+        <label for="buyRate">Курс покупки</label>
         <input type="number" id="buyRate" />
       </div>
-      <div class="form-group">
-        <label>Курс продажи</label>
+      <div class="form-group-half">
+        <label for="sellRate">Курс продажи</label>
         <input type="number" id="sellRate" />
       </div>
     </div>
 
-    <div class="row">
-      <div class="form-group">
-        <label>Комиссия покупки (%)</label>
-        <input type="number" id="buyFee" value="0"/>
+    <div class="form-group-row">
+      <div class="form-group-half">
+        <label for="buyFee">Комиссия покупки (%)</label>
+        <input type="number" id="buyFee" value="0" />
       </div>
-      <div class="form-group">
-        <label>Комиссия продажи (%)</label>
-        <input type="number" id="sellFee" value="0"/>
+      <div class="form-group-half">
+        <label for="sellFee">Комиссия продажи (%)</label>
+        <input type="number" id="sellFee" value="0" />
       </div>
     </div>
 
-    <button onclick="calculate()">Рассчитать</button>
+    <button id="calculateBtn">Рассчитать</button>
 
-    <div class="ad-banner">Реклама от Google<br><small>Благодаря рекламе приложение остаётся бесплатным</small></div>
+    <div id="banner">Реклама от Google</div>
 
-    <div class="result">
-      <p id="r1">Курс покупки: -</p>
-      <p id="r2">Курс продажи: -</p>
-      <p id="r3">Спред без комиссии: -</p>
-      <p id="r4">Спред с комиссией: -</p>
-      <p id="r5">Потрачено: -</p>
-      <p id="r6">Получено: -</p>
-      <p id="r7">Чистая прибыль: -</p>
+    <div id="result">
+      <p>Курс покупки: <span id="buyRateResult">-</span></p>
+      <p>Курс продажи: <span id="sellRateResult">-</span></p>
+      <p>Спред без комиссии: <span id="spreadNoFee">-</span></p>
+      <p>Спред с комиссией: <span id="spreadWithFee">-</span></p>
+      <p>Потрачено: <span id="spent">-</span></p>
+      <p>Получено: <span id="received">-</span></p>
+      <p>Чистая прибыль: <span id="netProfit">-</span></p>
     </div>
   </div>
 </body>
