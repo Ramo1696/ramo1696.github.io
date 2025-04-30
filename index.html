@@ -1,10 +1,14 @@
-
 <!DOCTYPE html>
 <html lang="ru">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>P2P Profit</title>
+
+  <!-- Подключение manifest.json -->
+  <link rel="manifest" href="manifest.json" />
+
+  <!-- Стили и скрипты -->
   <link rel="stylesheet" href="style.css" />
   <script defer src="exchange-rate.js"></script>
 </head>
@@ -39,12 +43,12 @@
 
     <div class="form-group">
       <label>Курс покупки</label>
-      <input type="number" id="buyRate" step="any" />
+      <input type="number" id="buyRate" />
     </div>
 
     <div class="form-group">
       <label>Курс продажи</label>
-      <input type="number" id="sellRate" step="any" />
+      <input type="number" id="sellRate" />
     </div>
 
     <div class="form-group">
@@ -63,7 +67,10 @@
 
     <button onclick="calculateProfit()">Рассчитать</button>
 
-    <div class="ad-banner">Реклама от Google<br><small>Благодаря рекламе приложение остаётся бесплатным</small></div>
+    <div class="ad-banner">
+      Реклама от Google<br>
+      <small>Благодаря рекламе приложение остаётся бесплатным</small>
+    </div>
 
     <div id="results" class="results-box">
       <p id="buyRateResult"></p>
