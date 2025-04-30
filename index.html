@@ -1,10 +1,10 @@
 <!DOCTYPE html>
 <html lang="ru">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>P2P Profit</title>
-  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="style.css" />
   <script defer src="exchange-rate.js"></script>
 </head>
 <body>
@@ -33,48 +33,48 @@
 
     <div class="form-group">
       <label>Сумма (в криптовалюте)</label>
-      <input type="number" id="amount" placeholder="например, 1000">
+      <input type="number" id="amount" placeholder="например, 1000" />
     </div>
 
-    <div class="rate-row">
-      <div class="form-group">
+    <div class="form-group dual">
+      <div>
         <label>Курс покупки</label>
-        <input type="number" id="buyRate">
+        <input type="number" id="buyRate" />
       </div>
-      <div class="form-group">
+      <div>
         <label>Курс продажи</label>
-        <input type="number" id="sellRate">
+        <input type="number" id="sellRate" />
       </div>
     </div>
 
-    <div class="rate-row">
-      <div class="form-group">
+    <div class="form-group dual">
+      <div>
         <label>Комиссия покупки (%)</label>
-        <input type="number" id="buyFee" value="0">
+        <input type="number" id="buyFee" value="0" />
       </div>
-      <div class="form-group">
+      <div>
         <label>Комиссия продажи (%)</label>
-        <input type="number" id="sellFee" value="0">
+        <input type="number" id="sellFee" value="0" />
       </div>
     </div>
 
-    <div class="form-group checkbox">
-      <input type="checkbox" id="autoRate">
+    <div class="form-group inline-check">
+      <input type="checkbox" id="autoRate" />
       <label for="autoRate">Автоматический курс</label>
     </div>
 
-    <button onclick="calculateProfit()">Рассчитать</button>
+    <button onclick="calculate()">Рассчитать</button>
 
-    <div class="ad-banner">Реклама от Google</div>
+    <div class="ad-banner">Реклама от Google<br><span>Благодаря рекламе приложение остаётся бесплатным</span></div>
 
-    <div class="results">
-      <p id="buyRateOutput">Курс покупки: -</p>
-      <p id="sellRateOutput">Курс продажи: -</p>
-      <p id="spreadOutput">Спред без комиссии: - %</p>
-      <p id="spreadWithFeeOutput">Спред с комиссией: - %</p>
-      <p id="spentOutput">Потрачено: -</p>
-      <p id="receivedOutput">Получено: -</p>
-      <p id="netProfitOutput">Чистая прибыль: -</p>
+    <div id="result" class="result-box">
+      <p id="resultBuyRate">Курс покупки: -</p>
+      <p id="resultSellRate">Курс продажи: -</p>
+      <p id="resultSpreadRaw">Спред без комиссии: - %</p>
+      <p id="resultSpreadWithFees">Спред с комиссией: - %</p>
+      <p id="resultSpent">Потрачено: -</p>
+      <p id="resultReceived">Получено: -</p>
+      <p id="resultProfit">Чистая прибыль: -</p>
     </div>
   </div>
 </body>
