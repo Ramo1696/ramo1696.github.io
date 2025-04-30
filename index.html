@@ -36,44 +36,44 @@
       <input type="number" id="amount" placeholder="например, 1000" />
     </div>
 
-    <div class="form-group auto-rate">
-      <label><input type="checkbox" id="autoRate" /> Автоматический курс</label>
-    </div>
-
-    <div class="form-group-row">
-      <div class="form-group-half">
-        <label for="buyRate">Курс покупки</label>
+    <div class="form-row">
+      <div class="form-group half">
+        <label>Курс покупки</label>
         <input type="number" id="buyRate" />
       </div>
-      <div class="form-group-half">
-        <label for="sellRate">Курс продажи</label>
+      <div class="form-group half">
+        <label>Курс продажи</label>
         <input type="number" id="sellRate" />
       </div>
     </div>
 
-    <div class="form-group-row">
-      <div class="form-group-half">
-        <label for="buyFee">Комиссия покупки (%)</label>
+    <div class="form-row">
+      <div class="form-group half">
+        <label>Комиссия покупки (%)</label>
         <input type="number" id="buyFee" value="0" />
       </div>
-      <div class="form-group-half">
-        <label for="sellFee">Комиссия продажи (%)</label>
+      <div class="form-group half">
+        <label>Комиссия продажи (%)</label>
         <input type="number" id="sellFee" value="0" />
       </div>
     </div>
 
-    <button id="calculateBtn">Рассчитать</button>
+    <div class="form-group checkbox-row">
+      <input type="checkbox" id="autoRate" />
+      <label for="autoRate">Автоматический курс</label>
+    </div>
 
-    <div id="banner">Реклама от Google</div>
+    <button onclick="calculate()">Рассчитать</button>
+    <div class="ad-banner">Реклама от Google</div>
 
-    <div id="result">
-      <p>Курс покупки: <span id="buyRateResult">-</span></p>
-      <p>Курс продажи: <span id="sellRateResult">-</span></p>
-      <p>Спред без комиссии: <span id="spreadNoFee">-</span></p>
-      <p>Спред с комиссией: <span id="spreadWithFee">-</span></p>
-      <p>Потрачено: <span id="spent">-</span></p>
-      <p>Получено: <span id="received">-</span></p>
-      <p>Чистая прибыль: <span id="netProfit">-</span></p>
+    <div id="result" class="result">
+      <p>Курс покупки: <span id="r-buy">-</span></p>
+      <p>Курс продажи: <span id="r-sell">-</span></p>
+      <p>Спред без комиссии: <span id="r-spread">-</span></p>
+      <p>Спред с комиссией: <span id="r-spread-fee">-</span></p>
+      <p>Потрачено: <span id="r-spent">-</span></p>
+      <p>Получено: <span id="r-received">-</span></p>
+      <p>Чистая прибыль: <span id="r-profit">-</span></p>
     </div>
   </div>
 </body>
