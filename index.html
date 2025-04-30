@@ -36,44 +36,47 @@
       <input type="number" id="amount" placeholder="например, 1000" />
     </div>
 
-    <div class="form-group dual-column">
-      <div>
+    <div class="form-row">
+      <div class="form-group">
         <label>Курс покупки</label>
         <input type="number" id="buyRate" />
       </div>
-      <div>
+      <div class="form-group">
         <label>Курс продажи</label>
         <input type="number" id="sellRate" />
       </div>
     </div>
 
-    <div class="form-group dual-column">
-      <div>
+    <div class="form-row">
+      <div class="form-group">
         <label>Комиссия покупки (%)</label>
-        <input type="number" id="buyFee" />
+        <input type="number" id="buyFee" value="0" />
       </div>
-      <div>
+      <div class="form-group">
         <label>Комиссия продажи (%)</label>
-        <input type="number" id="sellFee" />
+        <input type="number" id="sellFee" value="0" />
       </div>
     </div>
 
     <div class="form-group auto-rate">
-      <label><input type="checkbox" id="autoRate" /> Автоматический курс</label>
+      <label>
+        <input type="checkbox" id="autoRate" />
+        Автоматический курс
+      </label>
     </div>
 
-    <button onclick="calculate()">Рассчитать</button>
+    <button id="calculate">Рассчитать</button>
 
-    <div class="ad">Реклама от Google<br><small>Благодаря рекламе приложение остаётся бесплатным</small></div>
+    <div class="ad-banner">Реклама от Google<br><span>Благодаря рекламе приложение остаётся бесплатным</span></div>
 
-    <div id="result">
-      <p id="buyRateText"></p>
-      <p id="sellRateText"></p>
-      <p id="spreadText"></p>
-      <p id="spreadWithFeesText"></p>
-      <p id="spentText"></p>
-      <p id="receivedText"></p>
-      <p id="profitText"></p>
+    <div class="results">
+      <p id="buyRateText">Курс покупки: -</p>
+      <p id="sellRateText">Курс продажи: -</p>
+      <p id="spreadNoFeeText">Спред без комиссии: - %</p>
+      <p id="spreadWithFeeText">Спред с комиссией: - %</p>
+      <p id="spentText">Потрачено: -</p>
+      <p id="receivedText">Получено: -</p>
+      <p id="profitText">Чистая прибыль: -</p>
     </div>
   </div>
 </body>
