@@ -8,18 +8,17 @@
   <script defer src="exchange-rate.js"></script>
 </head>
 <body>
-  <!-- Кнопки темы и языка -->
-  <div class="ui-buttons">
-    <button id="themeToggle">☀️</button>
-    <button id="langToggle">Eng</button>
+  <div class="top-bar">
+    <button id="themeToggle" class="icon-btn">☀️</button>
+    <button id="langToggle" class="lang-btn">Eng</button>
   </div>
 
   <div id="container">
     <h1>P2P Profit</h1>
 
     <div class="form-group">
-      <label id="crypto">Криптовалюта</label>
-      <select id="cryptoSelect">
+      <label id="cryptoLabel">Криптовалюта</label>
+      <select id="crypto">
         <option value="tether">USDT</option>
         <option value="usd-coin">USDC</option>
         <option value="bitcoin">BTC</option>
@@ -28,8 +27,8 @@
     </div>
 
     <div class="form-group">
-      <label id="fiat">Фиат</label>
-      <select id="fiatSelect">
+      <label id="fiatLabel">Фиат</label>
+      <select id="fiat">
         <option value="gel">GEL</option>
         <option value="usd">USD</option>
         <option value="eur">EUR</option>
@@ -38,39 +37,43 @@
     </div>
 
     <div class="form-group">
-      <label id="sum">Сумма (в криптовалюте)</label>
+      <label id="amountLabel">Сумма (в криптовалюте)</label>
       <input type="number" id="amount" placeholder="например, 1000" />
     </div>
 
     <div class="form-group">
-      <label id="buyRate">Курс покупки</label>
-      <input type="number" id="buyRateInput" step="any" />
+      <label id="buyRateLabel">Курс покупки</label>
+      <input type="number" id="buyRate" step="any" />
     </div>
 
     <div class="form-group">
-      <label id="sellRate">Курс продажи</label>
-      <input type="number" id="sellRateInput" step="any" />
+      <label id="sellRateLabel">Курс продажи</label>
+      <input type="number" id="sellRate" step="any" />
     </div>
 
     <div class="form-group">
-      <label id="buyFee">Комиссия покупки (%)</label>
-      <input type="number" id="buyFeeInput" value="0" />
+      <label id="buyFeeLabel">Комиссия покупки (%)</label>
+      <input type="number" id="buyFee" step="any" value="0" />
     </div>
 
     <div class="form-group">
-      <label id="sellFee">Комиссия продажи (%)</label>
-      <input type="number" id="sellFeeInput" value="0" />
+      <label id="sellFeeLabel">Комиссия продажи (%)</label>
+      <input type="number" id="sellFee" step="any" value="0" />
     </div>
 
-    <div class="form-group auto-rate">
-      <label><input type="checkbox" id="autoRate" /> <span id="autoRateText">Автоматический курс</span></label>
+    <div class="form-group checkbox-group">
+      <input type="checkbox" id="autoRate" />
+      <label for="autoRate" id="autoRateLabel">Автоматический курс</label>
     </div>
 
-    <button id="calculate">Рассчитать</button>
+    <button id="calculateBtn">Рассчитать</button>
 
-    <div class="ad-banner">Реклама от Google<br><small>Благодаря рекламе приложение остаётся бесплатным</small></div>
+    <div id="result"></div>
 
-    <div id="results" class="results-box"></div>
+    <div class="ad-banner">
+      <strong>Реклама от Google</strong><br />
+      Благодаря рекламе приложение остаётся бесплатным
+    </div>
   </div>
 </body>
 </html>
