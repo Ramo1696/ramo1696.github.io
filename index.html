@@ -8,67 +8,57 @@
   <script defer src="exchange-rate.js"></script>
 </head>
 <body class="dark">
-  <header>
-    <button id="themeToggle" class="icon-button">☀️</button>
-    <button id="langToggle" class="lang-button">Eng</button>
-  </header>
+  <div id="top-bar">
+    <button id="theme-toggle">☀️</button>
+    <h1 id="title">P2P Profit</h1>
+    <button id="lang-toggle">Eng</button>
+  </div>
 
   <div id="container">
-    <h1>P2P Profit</h1>
+    <label id="label-crypto">Криптовалюта</label>
+    <select id="crypto">
+      <option value="tether">USDT</option>
+      <option value="usd-coin">USDC</option>
+      <option value="bitcoin">BTC</option>
+      <option value="ethereum">ETH</option>
+    </select>
 
-    <div class="form-group">
-      <label id="label-crypto">Криптовалюта</label>
-      <select id="crypto">
-        <option value="tether">USDT</option>
-        <option value="usd-coin">USDC</option>
-        <option value="bitcoin">BTC</option>
-        <option value="ethereum">ETH</option>
-      </select>
+    <label id="label-fiat">Фиат</label>
+    <select id="fiat">
+      <option value="gel">GEL</option>
+      <option value="usd">USD</option>
+      <option value="eur">EUR</option>
+      <option value="rub">RUB</option>
+    </select>
+
+    <label id="label-amount">Сумма (в криптовалюте)</label>
+    <input id="amount" type="number" placeholder="например, 1000" />
+
+    <label id="label-buy">Курс покупки</label>
+    <input id="buyRate" type="number" />
+
+    <label id="label-sell">Курс продажи</label>
+    <input id="sellRate" type="number" />
+
+    <label id="label-buy-fee">Комиссия покупки (%)</label>
+    <input id="buyFee" type="number" value="0" />
+
+    <label id="label-sell-fee">Комиссия продажи (%)</label>
+    <input id="sellFee" type="number" value="0" />
+
+    <div class="checkbox-group">
+      <input type="checkbox" id="autoRate" />
+      <label for="autoRate" id="label-auto">Автоматический курс</label>
     </div>
 
-    <div class="form-group">
-      <label id="label-fiat">Фиат</label>
-      <select id="fiat">
-        <option value="gel">GEL</option>
-        <option value="usd">USD</option>
-        <option value="eur">EUR</option>
-        <option value="rub">RUB</option>
-      </select>
+    <button id="calculate">Рассчитать</button>
+
+    <div class="ad-label">
+      <p id="ad-title">Реклама от Google</p>
+      <p id="ad-sub">Благодаря рекламе приложение остаётся бесплатным</p>
     </div>
 
-    <div class="form-group">
-      <label id="label-amount">Сумма (в криптовалюте)</label>
-      <input type="number" id="amount" placeholder="например, 1000" />
-    </div>
-
-    <div class="form-group">
-      <label id="label-buy">Курс покупки</label>
-      <input type="number" id="buyRate" />
-    </div>
-
-    <div class="form-group">
-      <label id="label-sell">Курс продажи</label>
-      <input type="number" id="sellRate" />
-    </div>
-
-    <div class="form-group">
-      <label id="label-buy-fee">Комиссия покупки (%)</label>
-      <input type="number" id="buyFee" value="0" />
-    </div>
-
-    <div class="form-group">
-      <label id="label-sell-fee">Комиссия продажи (%)</label>
-      <input type="number" id="sellFee" value="0" />
-    </div>
-
-    <div class="form-group">
-      <label><input type="checkbox" id="autoRate" /> <span id="label-auto">Автоматический курс</span></label>
-    </div>
-
-    <button id="calculate" class="primary-button">Рассчитать</button>
-
-    <div id="result"></div>
-    <div id="ad">Реклама от Google<br>Благодаря рекламе приложение остаётся бесплатным</div>
+    <div id="results"></div>
   </div>
 </body>
 </html>
