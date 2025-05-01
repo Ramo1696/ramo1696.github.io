@@ -6,7 +6,7 @@ const sellRateInput = document.getElementById('sellRate');
 const buyFeeInput = document.getElementById('buyFee');
 const sellFeeInput = document.getElementById('sellFee');
 const autoRateCheckbox = document.getElementById('autoRate');
-const calculateBtn = document.querySelector('button');
+const calculateBtn = document.getElementById('calculateBtn');
 const resultsBox = document.querySelector('.results-box');
 
 async function fetchExchangeRate(crypto, fiat) {
@@ -53,24 +53,23 @@ function calculateProfit() {
   const netProfit = received - spent;
 
   resultsBox.innerHTML = `
-    <p>Курс покупки: <span>${buyRate.toFixed(2)}</span></p>
-    <p>Курс продажи: <span>${sellRate.toFixed(2)}</span></p>
-    <p>Спред без комиссии: <span>${spreadNoFee.toFixed(2)}%</span></p>
-    <p>Спред с комиссией: <span>${spreadWithFee.toFixed(2)}%</span></p>
-    <p>Потрачено: <span>${spent.toFixed(2)}</span></p>
-    <p>Получено: <span>${received.toFixed(2)}</span></p>
-    <p>Чистая прибыль: <span>${netProfit.toFixed(2)}</span></p>
+    <p id="buyRateResult">Курс покупки: <span>${buyRate.toFixed(2)}</span></p>
+    <p id="sellRateResult">Курс продажи: <span>${sellRate.toFixed(2)}</span></p>
+    <p id="spreadNoFee">Спред без комиссии: <span>${spreadNoFee.toFixed(2)}%</span></p>
+    <p id="spreadWithFee">Спред с комиссией: <span>${spreadWithFee.toFixed(2)}%</span></p>
+    <p id="spent">Потрачено: <span>${spent.toFixed(2)}</span></p>
+    <p id="received">Получено: <span>${received.toFixed(2)}</span></p>
+    <p id="netProfit">Чистая прибыль: <span>${netProfit.toFixed(2)}</span></p>
   `;
 }
 
-// Обновляем курс при изменении крипты, фиата, чекбокса
+// Слушатели событий
 cryptoSelect.addEventListener('change', updateAutoRate);
 fiatSelect.addEventListener('change', updateAutoRate);
 autoRateCheckbox.addEventListener('change', updateAutoRate);
-
-// Кнопка расчета
 calculateBtn.addEventListener('click', calculateProfit);
-// Перевод интерфейса (ENG / RU)
+
+// === ПЕРЕВОД ===
 const translations = {
   ru: {
     button: "Рассчитать",
@@ -109,35 +108,38 @@ let currentLang = "ru";
 function applyLanguage(lang) {
   currentLang = lang;
 
-  const labels = document.querySelectorAll("label");
+  const labels = document.querySelectorAll(".form-group label");
   labels.forEach((label, index) => {
     if (translations[lang].labels[index]) {
       label.textContent = translations[lang].labels[index];
     }
   });
 
-  // Перевод кнопки
-  const calcBtn = document.querySelector("button");
+  // Кнопка "Рассчитать"
+  const calcBtn = document.getElementById("calculateBtn");
   if (calcBtn) {
     calcBtn.textContent = translations[lang].button;
   }
 
-  // Перевод рекламы (если есть)
+  // Рекламный блок
   const adBanner = document.querySelector(".ad-banner");
   if (adBanner) {
-    const [main, sub] = adBanner.querySelectorAll("small, br");
-    adBanner.innerHTML = `<div>${translations[lang].labels[8]}<br><small>${translations[lang].labels[9]}</small></div>`;
+    adBanner.innerHTML = `
+      ${translations[lang].labels[8]}<br>
+      <small>${translations[lang].labels[9]}</small>
+    `;
   }
 }
 
-// Пример использования — можешь повесить на кнопку:
+// Кнопка смены языка
 document.addEventListener("DOMContentLoaded", () => {
   const langToggle = document.createElement("button");
   langToggle.textContent = "ENG";
   langToggle.style.position = "fixed";
   langToggle.style.top = "10px";
   langToggle.style.right = "10px";
-  langToggle.style.zIndex = "1000";
+  langToggle.style.zIndex = "9999";
+  langToggle.style.padding = "5px 10px";
   document.body.appendChild(langToggle);
 
   langToggle.addEventListener("click", () => {
