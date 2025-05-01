@@ -1,69 +1,58 @@
+document.getElementById("themeToggle").addEventListener("click", () => {
+  document.body.classList.toggle("light");
+  document.body.classList.toggle("dark");
+});
+
+const langToggle = document.getElementById("langToggle");
 const translations = {
   ru: {
-    cryptoLabel: "Криптовалюта",
-    fiatLabel: "Фиат",
-    amountLabel: "Сумма (в криптовалюте)",
-    buyRateLabel: "Курс покупки",
-    sellRateLabel: "Курс продажи",
-    buyFeeLabel: "Комиссия покупки (%)",
-    sellFeeLabel: "Комиссия продажи (%)",
-    autoRateLabel: "Автоматический курс",
-    calculateBtn: "Рассчитать"
+    Eng: "Eng",
+    h1: "P2P Profit",
+    crypto: "Криптовалюта",
+    fiat: "Фиат",
+    amount: "Сумма (в криптовалюте)",
+    buy: "Курс покупки",
+    sell: "Курс продажи",
+    buyFee: "Комиссия покупки (%)",
+    sellFee: "Комиссия продажи (%)",
+    auto: "Автоматический курс",
+    calc: "Рассчитать",
+    ad: "Реклама от Google<br>Благодаря рекламе приложение остаётся бесплатным"
   },
   en: {
-    cryptoLabel: "Crypto",
-    fiatLabel: "Fiat",
-    amountLabel: "Amount (in crypto)",
-    buyRateLabel: "Buy rate",
-    sellRateLabel: "Sell rate",
-    buyFeeLabel: "Buy fee (%)",
-    sellFeeLabel: "Sell fee (%)",
-    autoRateLabel: "Automatic rate",
-    calculateBtn: "Calculate"
+    Eng: "Рус",
+    h1: "P2P Profit",
+    crypto: "Cryptocurrency",
+    fiat: "Fiat",
+    amount: "Amount (in crypto)",
+    buy: "Buy Rate",
+    sell: "Sell Rate",
+    buyFee: "Buy Fee (%)",
+    sellFee: "Sell Fee (%)",
+    auto: "Automatic Rate",
+    calc: "Calculate",
+    ad: "Google Ads<br>This app stays free thanks to advertising"
   }
 };
 
 let currentLang = "ru";
 
-document.getElementById("themeToggle").addEventListener("click", () => {
-  document.body.classList.toggle("light");
-});
-
-document.getElementById("langToggle").addEventListener("click", () => {
+langToggle.addEventListener("click", () => {
   currentLang = currentLang === "ru" ? "en" : "ru";
-  updateLanguage();
+  updateLang();
 });
 
-function updateLanguage() {
+function updateLang() {
   const t = translations[currentLang];
-  for (const key in t) {
-    const el = document.getElementById(key);
-    if (el) el.innerText = t[key];
-  }
-  document.getElementById("langToggle").innerText = currentLang === "ru" ? "Eng" : "Рус";
+  document.getElementById("label-crypto").textContent = t.crypto;
+  document.getElementById("label-fiat").textContent = t.fiat;
+  document.getElementById("label-amount").textContent = t.amount;
+  document.getElementById("label-buy").textContent = t.buy;
+  document.getElementById("label-sell").textContent = t.sell;
+  document.getElementById("label-buy-fee").textContent = t.buyFee;
+  document.getElementById("label-sell-fee").textContent = t.sellFee;
+  document.getElementById("label-auto").textContent = t.auto;
+  document.getElementById("calculate").textContent = t.calc;
+  document.getElementById("ad").innerHTML = t.ad;
+  langToggle.textContent = t.Eng;
 }
-
-document.getElementById("calculateBtn").addEventListener("click", () => {
-  const amount = parseFloat(document.getElementById("amount").value);
-  const buyRate = parseFloat(document.getElementById("buyRate").value);
-  const sellRate = parseFloat(document.getElementById("sellRate").value);
-  const buyFee = parseFloat(document.getElementById("buyFee").value) || 0;
-  const sellFee = parseFloat(document.getElementById("sellFee").value) || 0;
-
-  if (isNaN(amount) || isNaN(buyRate) || isNaN(sellRate)) return;
-
-  const buyCost = amount * buyRate * (1 + buyFee / 100);
-  const sellValue = amount * sellRate * (1 - sellFee / 100);
-  const profit = sellValue - buyCost;
-  const spread = ((sellRate - buyRate) / buyRate) * 100;
-
-  const result = `
-    ${translations[currentLang].buyRateLabel}: ${buyRate}<br>
-    ${translations[currentLang].sellRateLabel}: ${sellRate}<br>
-    Спред: ${spread.toFixed(2)}%<br>
-    Потрачено: ${buyCost.toFixed(2)}<br>
-    Получено: ${sellValue.toFixed(2)}<br>
-    Чистая прибыль: ${profit.toFixed(2)}
-  `;
-  document.getElementById("result").innerHTML = result;
-});
