@@ -70,3 +70,79 @@ autoRateCheckbox.addEventListener('change', updateAutoRate);
 
 // Кнопка расчета
 calculateBtn.addEventListener('click', calculateProfit);
+// Перевод интерфейса (ENG / RU)
+const translations = {
+  ru: {
+    button: "Рассчитать",
+    labels: [
+      "Криптовалюта",
+      "Фиат",
+      "Сумма (в криптовалюте)",
+      "Курс покупки",
+      "Курс продажи",
+      "Комиссия покупки (%)",
+      "Комиссия продажи (%)",
+      "Автоматический курс",
+      "Реклама от Google",
+      "Благодаря рекламе приложение остаётся бесплатным"
+    ]
+  },
+  en: {
+    button: "Calculate",
+    labels: [
+      "Cryptocurrency",
+      "Fiat",
+      "Amount (in crypto)",
+      "Buy Rate",
+      "Sell Rate",
+      "Buy Fee (%)",
+      "Sell Fee (%)",
+      "Automatic Rate",
+      "Google Ads",
+      "Thanks to ads, the app stays free"
+    ]
+  }
+};
+
+let currentLang = "ru";
+
+function applyLanguage(lang) {
+  currentLang = lang;
+
+  const labels = document.querySelectorAll("label");
+  labels.forEach((label, index) => {
+    if (translations[lang].labels[index]) {
+      label.textContent = translations[lang].labels[index];
+    }
+  });
+
+  // Перевод кнопки
+  const calcBtn = document.querySelector("button");
+  if (calcBtn) {
+    calcBtn.textContent = translations[lang].button;
+  }
+
+  // Перевод рекламы (если есть)
+  const adBanner = document.querySelector(".ad-banner");
+  if (adBanner) {
+    const [main, sub] = adBanner.querySelectorAll("small, br");
+    adBanner.innerHTML = `<div>${translations[lang].labels[8]}<br><small>${translations[lang].labels[9]}</small></div>`;
+  }
+}
+
+// Пример использования — можешь повесить на кнопку:
+document.addEventListener("DOMContentLoaded", () => {
+  const langToggle = document.createElement("button");
+  langToggle.textContent = "ENG";
+  langToggle.style.position = "fixed";
+  langToggle.style.top = "10px";
+  langToggle.style.right = "10px";
+  langToggle.style.zIndex = "1000";
+  document.body.appendChild(langToggle);
+
+  langToggle.addEventListener("click", () => {
+    currentLang = currentLang === "ru" ? "en" : "ru";
+    langToggle.textContent = currentLang === "ru" ? "ENG" : "РУС";
+    applyLanguage(currentLang);
+  });
+});
