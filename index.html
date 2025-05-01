@@ -8,17 +8,15 @@
   <script defer src="exchange-rate.js"></script>
 </head>
 <body>
+  <!-- ЗАСТАВКА -->
   <div id="splash-screen">
-    <img src="https://upload.wikimedia.org/wikipedia/commons/9/9a/Bitcoin_Logo.svg" alt="Logo" class="splash-logo">
+    <img src="logo.png" alt="Logo" class="splash-logo">
     <h1>P2P Profit</h1>
   </div>
 
-  <div id="container" class="hidden">
-    <div class="header">
-      <button id="theme-toggle">🌞</button>
-      <h1 id="title">P2P Profit</h1>
-      <button id="lang-toggle">Eng</button>
-    </div>
+  <!-- ГЛАВНОЕ ПРИЛОЖЕНИЕ -->
+  <div id="container" style="display: none;">
+    <h1>P2P Profit</h1>
 
     <label>Криптовалюта</label>
     <select id="crypto">
@@ -36,8 +34,8 @@
       <option value="rub">RUB</option>
     </select>
 
-    <label>Сумма (в криптовалюте)</label>
-    <input type="number" id="amount" placeholder="например, 1000" />
+    <label>Сумма</label>
+    <input type="number" id="amount" />
 
     <label>Курс покупки</label>
     <input type="number" id="buyRate" />
@@ -51,7 +49,7 @@
     <label>Комиссия продажи (%)</label>
     <input type="number" id="sellFee" value="0" />
 
-    <label><input type="checkbox" id="autoRate" /> Автоматический курс</label>
+    <label><input type="checkbox" id="autoRate" /> Авто курс</label>
 
     <button id="calculate">Рассчитать</button>
     <div id="result"></div>
