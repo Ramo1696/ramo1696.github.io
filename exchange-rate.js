@@ -1,58 +1,69 @@
-// Смена темы
-const savedTheme = localStorage.getItem("theme") || "dark";
-document.body.classList.add(savedTheme + "-theme");
-
-document.getElementById("themeToggle").onclick = () => {
-  const isDark = document.body.classList.contains("dark-theme");
-  document.body.classList.toggle("dark-theme", !isDark);
-  document.body.classList.toggle("light-theme", isDark);
-  localStorage.setItem("theme", isDark ? "light" : "dark");
+const translations = {
+  ru: {
+    cryptoLabel: "Криптовалюта",
+    fiatLabel: "Фиат",
+    amountLabel: "Сумма (в криптовалюте)",
+    buyRateLabel: "Курс покупки",
+    sellRateLabel: "Курс продажи",
+    buyFeeLabel: "Комиссия покупки (%)",
+    sellFeeLabel: "Комиссия продажи (%)",
+    autoRateLabel: "Автоматический курс",
+    calculateBtn: "Рассчитать"
+  },
+  en: {
+    cryptoLabel: "Crypto",
+    fiatLabel: "Fiat",
+    amountLabel: "Amount (in crypto)",
+    buyRateLabel: "Buy rate",
+    sellRateLabel: "Sell rate",
+    buyFeeLabel: "Buy fee (%)",
+    sellFeeLabel: "Sell fee (%)",
+    autoRateLabel: "Automatic rate",
+    calculateBtn: "Calculate"
+  }
 };
 
-// Смена языка
-let savedLang = localStorage.getItem("lang") || "ru";
-applyLanguage(savedLang);
+let currentLang = "ru";
 
-document.getElementById("langToggle").onclick = () => {
-  savedLang = savedLang === "ru" ? "en" : "ru";
-  localStorage.setItem("lang", savedLang);
-  applyLanguage(savedLang);
-};
+document.getElementById("themeToggle").addEventListener("click", () => {
+  document.body.classList.toggle("light");
+});
 
-function applyLanguage(lang) {
-  const translations = {
-    ru: {
-      crypto: "Криптовалюта",
-      fiat: "Фиат",
-      sum: "Сумма (в криптовалюте)",
-      buyRate: "Курс покупки",
-      sellRate: "Курс продажи",
-      buyFee: "Комиссия покупки (%)",
-      sellFee: "Комиссия продажи (%)",
-      autoRate: "Автоматический курс",
-      calculate: "Рассчитать"
-    },
-    en: {
-      crypto: "Cryptocurrency",
-      fiat: "Fiat",
-      sum: "Amount (in crypto)",
-      buyRate: "Buy rate",
-      sellRate: "Sell rate",
-      buyFee: "Buy fee (%)",
-      sellFee: "Sell fee (%)",
-      autoRate: "Automatic rate",
-      calculate: "Calculate"
-    }
-  };
+document.getElementById("langToggle").addEventListener("click", () => {
+  currentLang = currentLang === "ru" ? "en" : "ru";
+  updateLanguage();
+});
 
-  document.getElementById("crypto").textContent = translations[lang].crypto;
-  document.getElementById("fiat").textContent = translations[lang].fiat;
-  document.getElementById("sum").textContent = translations[lang].sum;
-  document.getElementById("buyRate").textContent = translations[lang].buyRate;
-  document.getElementById("sellRate").textContent = translations[lang].sellRate;
-  document.getElementById("buyFee").textContent = translations[lang].buyFee;
-  document.getElementById("sellFee").textContent = translations[lang].sellFee;
-  document.getElementById("autoRateText").textContent = translations[lang].autoRate;
-  document.getElementById("calculate").textContent = translations[lang].calculate;
-  document.getElementById("langToggle").textContent = lang === "ru" ? "Eng" : "Рус";
+function updateLanguage() {
+  const t = translations[currentLang];
+  for (const key in t) {
+    const el = document.getElementById(key);
+    if (el) el.innerText = t[key];
+  }
+  document.getElementById("langToggle").innerText = currentLang === "ru" ? "Eng" : "Рус";
 }
+
+document.getElementById("calculateBtn").addEventListener("click", () => {
+  const amount = parseFloat(document.getElementById("amount").value);
+  const buyRate = parseFloat(document.getElementById("buyRate").value);
+  const sellRate = parseFloat(document.getElementById("sellRate").value);
+  const buyFee = parseFloat(document.getElementById("buyFee").value) || 0;
+  const sellFee = parseFloat(document.getElementById("sellFee").value) || 0;
+
+  if (isNaN(amount) || isNaN(buyRate) || isNaN(sellRate)) return;
+
+  const buyCost = amount * buyRate * (1 + buyFee / 100);
+  const sellValue = amount * sellRate * (1 - sellFee / 100);
+  const profit = sellValue - buyCost;
+  const spread = ((sellRate - buyRate) / buyRate) * 100;
+
+  const result = `
+    ${translations[currentLang].buyRateLabel}: ${buyRate}<br>
+    ${translations[currentLang].sellRateLabel}: ${sellRate}<br>
+    Спред: ${spread.toFixed(2)}%<br>
+    Потрачено: ${buyCost.toFixed(2)}<br>
+    Получено: ${sellValue.toFixed(2)}<br>
+    Чистая прибыль: ${profit.toFixed(2)}
+  `;
+  document.getElementById("result").innerHTML = result;
+});
