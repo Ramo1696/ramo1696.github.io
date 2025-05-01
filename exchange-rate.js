@@ -1,10 +1,13 @@
-document.addEventListener("DOMContentLoaded", () => {
+window.addEventListener("load", () => {
   const splash = document.getElementById("splash-screen");
   const container = document.getElementById("container");
 
   setTimeout(() => {
-    splash.style.display = "none";
-    container.classList.remove("hidden");
+    splash.style.opacity = 0;
+    setTimeout(() => {
+      splash.style.display = "none";
+      container.style.display = "block";
+    }, 500);
   }, 2000);
 
   document.getElementById("calculate").addEventListener("click", () => {
