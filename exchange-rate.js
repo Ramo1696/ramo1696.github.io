@@ -1,87 +1,29 @@
 document.addEventListener("DOMContentLoaded", () => {
-  const themeToggle = document.getElementById("theme-toggle");
-  const langToggle = document.getElementById("lang-toggle");
-  const body = document.body;
+  const splash = document.getElementById("splash-screen");
+  const container = document.getElementById("container");
 
-  // Theme toggle
-  themeToggle.addEventListener("click", () => {
-    const isDark = body.classList.contains("dark");
-    body.classList.toggle("dark", !isDark);
-    body.classList.toggle("light", isDark);
-    themeToggle.textContent = isDark ? "🌙" : "☀️";
-  });
+  setTimeout(() => {
+    splash.style.display = "none";
+    container.classList.remove("hidden");
+  }, 2000);
 
-  // Language toggle
-  const translations = {
-    ru: {
-      "crypto-label": "Криптовалюта",
-      "fiat-label": "Фиат",
-      "amount-label": "Сумма (в криптовалюте)",
-      "buy-rate-label": "Курс покупки",
-      "sell-rate-label": "Курс продажи",
-      "buy-fee-label": "Комиссия покупки (%)",
-      "sell-fee-label": "Комиссия продажи (%)",
-      "auto-rate-label": "Автоматический курс",
-      "calculate-button": "Рассчитать"
-    },
-    en: {
-      "crypto-label": "Cryptocurrency",
-      "fiat-label": "Fiat",
-      "amount-label": "Amount (in crypto)",
-      "buy-rate-label": "Buy Rate",
-      "sell-rate-label": "Sell Rate",
-      "buy-fee-label": "Buy Fee (%)",
-      "sell-fee-label": "Sell Fee (%)",
-      "auto-rate-label": "Automatic Rate",
-      "calculate-button": "Calculate"
-    }
-  };
-
-  let currentLang = "ru";
-  langToggle.addEventListener("click", () => {
-    currentLang = currentLang === "ru" ? "en" : "ru";
-    langToggle.textContent = currentLang === "ru" ? "Eng" : "Рус";
-    for (const id in translations[currentLang]) {
-      const element = document.getElementById(id);
-      if (element) element.textContent = translations[currentLang][id];
-    }
-  });
-
-  // Calculate
-  document.getElementById("calculate-button").addEventListener("click", () => {
+  document.getElementById("calculate").addEventListener("click", () => {
     const amount = parseFloat(document.getElementById("amount").value);
-    const buyRate = parseFloat(document.getElementById("buy-rate").value);
-    const sellRate = parseFloat(document.getElementById("sell-rate").value);
-    const buyFee = parseFloat(document.getElementById("buy-fee").value) || 0;
-    const sellFee = parseFloat(document.getElementById("sell-fee").value) || 0;
+    const buyRate = parseFloat(document.getElementById("buyRate").value);
+    const sellRate = parseFloat(document.getElementById("sellRate").value);
+    const buyFee = parseFloat(document.getElementById("buyFee").value || 0);
+    const sellFee = parseFloat(document.getElementById("sellFee").value || 0);
 
     if (isNaN(amount) || isNaN(buyRate) || isNaN(sellRate)) return;
 
-    const spent = amount * buyRate * (1 + buyFee / 100);
-    const received = amount * sellRate * (1 - sellFee / 100);
-    const profit = received - spent;
+    const buyTotal = amount * buyRate * (1 + buyFee / 100);
+    const sellTotal = amount * sellRate * (1 - sellFee / 100);
+    const profit = sellTotal - buyTotal;
 
-    document.getElementById("results").innerHTML = `
-      Потрачено: ${spent.toFixed(2)}<br>
-      Получено: ${received.toFixed(2)}<br>
-      Чистая прибыль: ${profit.toFixed(2)}
+    document.getElementById("result").innerHTML = `
+      <p>Потрачено: ${buyTotal.toFixed(2)}</p>
+      <p>Получено: ${sellTotal.toFixed(2)}</p>
+      <p>Чистая прибыль: ${profit.toFixed(2)}</p>
     `;
-  });
-
-  // Auto rate
-  document.getElementById("auto-rate").addEventListener("change", async (e) => {
-    if (!e.target.checked) return;
-    const crypto = document.getElementById("crypto").value;
-    const fiat = document.getElementById("fiat").value;
-
-    try {
-      const res = await fetch(`https://api.coingecko.com/api/v3/simple/price?ids=${crypto}&vs_currencies=${fiat}`);
-      const data = await res.json();
-      const rate = data[crypto][fiat];
-      document.getElementById("buy-rate").value = rate;
-      document.getElementById("sell-rate").value = rate;
-    } catch (err) {
-      alert("Ошибка загрузки курса");
-    }
   });
 });
