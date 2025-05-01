@@ -1,43 +1,21 @@
-:root {
-  --bg: #121212;
-  --fg: white;
-  --accent: #FFD700;
-  --button-bg: #FFD700;
-  --button-fg: black;
-}
-
-body.light {
-  --bg: #ffffff;
-  --fg: black;
-  --accent: #FFD700;
-  --button-bg: #FFD700;
-  --button-fg: black;
-}
-
-* {
-  transition: background-color 0.3s, color 0.3s;
-}
-
 body {
-  background-color: var(--bg);
-  color: var(--fg);
-  font-family: sans-serif;
   margin: 0;
-  padding: 0;
+  font-family: sans-serif;
+  transition: background-color 0.5s, color 0.5s;
 }
 
-.top-bar {
+header {
   display: flex;
   justify-content: space-between;
-  padding: 10px 15px;
+  padding: 10px 20px;
 }
 
-.icon-btn, .lang-btn {
-  background-color: var(--accent);
-  color: var(--button-fg);
+.icon-button,
+.lang-button {
+  background-color: #ffdc00;
   border: none;
-  border-radius: 10px;
-  padding: 5px 12px;
+  border-radius: 8px;
+  padding: 8px 12px;
   font-weight: bold;
   cursor: pointer;
 }
@@ -49,7 +27,6 @@ body {
 }
 
 h1 {
-  color: var(--accent);
   text-align: center;
   margin-bottom: 20px;
 }
@@ -58,39 +35,54 @@ h1 {
   margin-bottom: 15px;
 }
 
-input, select {
+input,
+select {
   width: 100%;
   padding: 10px;
-  border: none;
   border-radius: 8px;
-  background-color: #1e1e1e;
-  color: white;
-}
-body.light input, body.light select {
-  background-color: #f0f0f0;
-  color: black;
+  border: none;
 }
 
-.checkbox-group {
-  display: flex;
-  align-items: center;
-}
-
-#calculateBtn {
+.primary-button {
   width: 100%;
   padding: 12px;
-  background-color: var(--button-bg);
-  color: var(--button-fg);
-  font-weight: bold;
   border: none;
+  background-color: #ffd700;
+  font-weight: bold;
+  font-size: 16px;
   border-radius: 8px;
-  margin-top: 10px;
   cursor: pointer;
 }
 
-#ad-banner {
-  margin-top: 25px;
-  font-size: 14px;
+#result {
+  margin-top: 20px;
+  font-weight: bold;
+}
+
+#ad {
+  margin-top: 20px;
+  font-size: 13px;
   text-align: center;
-  opacity: 0.6;
+}
+
+body.dark {
+  background-color: #121212;
+  color: white;
+}
+
+body.dark input,
+body.dark select {
+  background-color: #1e1e1e;
+  color: white;
+}
+
+body.light {
+  background-color: #ffffff;
+  color: #000000;
+}
+
+body.light input,
+body.light select {
+  background-color: #f0f0f0;
+  color: black;
 }
