@@ -1,30 +1,96 @@
-body.light-theme {
-  background-color: white;
-  color: black;
+:root {
+  --bg: #121212;
+  --fg: white;
+  --accent: #FFD700;
+  --button-bg: #FFD700;
+  --button-fg: black;
 }
-body.light-theme input,
-body.light-theme select {
+
+body.light {
+  --bg: #ffffff;
+  --fg: black;
+  --accent: #FFD700;
+  --button-bg: #FFD700;
+  --button-fg: black;
+}
+
+* {
+  transition: background-color 0.3s, color 0.3s;
+}
+
+body {
+  background-color: var(--bg);
+  color: var(--fg);
+  font-family: sans-serif;
+  margin: 0;
+  padding: 0;
+}
+
+.top-bar {
+  display: flex;
+  justify-content: space-between;
+  padding: 10px 15px;
+}
+
+.icon-btn, .lang-btn {
+  background-color: var(--accent);
+  color: var(--button-fg);
+  border: none;
+  border-radius: 10px;
+  padding: 5px 12px;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+#container {
+  max-width: 420px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+h1 {
+  color: var(--accent);
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.form-group {
+  margin-bottom: 15px;
+}
+
+input, select {
+  width: 100%;
+  padding: 10px;
+  border: none;
+  border-radius: 8px;
+  background-color: #1e1e1e;
+  color: white;
+}
+body.light input, body.light select {
   background-color: #f0f0f0;
   color: black;
 }
-body.light-theme button {
-  background-color: #000;
-  color: #fff;
-}
-.ui-buttons {
-  position: fixed;
-  top: 10px;
-  right: 10px;
+
+.checkbox-group {
   display: flex;
-  gap: 10px;
-  z-index: 999;
+  align-items: center;
 }
-.ui-buttons button {
-  padding: 6px 10px;
+
+#calculateBtn {
+  width: 100%;
+  padding: 12px;
+  background-color: var(--button-bg);
+  color: var(--button-fg);
+  font-weight: bold;
   border: none;
   border-radius: 8px;
-  font-weight: bold;
-  background-color: #FFD700;
-  color: black;
+  margin-top: 10px;
   cursor: pointer;
+}
+
+#ad-banner {
+  margin-top: 25px;
+  font-size: 14px;
+  text-align: center;
+  opacity: 0.6;
 }
