@@ -1,75 +1,39 @@
 body {
-  font-family: sans-serif;
   margin: 0;
-  transition: background 0.3s, color 0.3s;
+  font-family: 'Arial', sans-serif;
+  background-color: var(--bg-color);
+  color: var(--text-color);
+  transition: background-color 0.3s, color 0.3s;
 }
 
-body.dark {
-  background-color: #121212;
-  color: white;
+:root {
+  --bg-color: #ffffff;
+  --text-color: #000000;
+  --button-bg: #FFD700;
+  --button-text: #000000;
 }
 
-body.light {
-  background-color: #fdfdfd;
-  color: black;
+.dark-theme {
+  --bg-color: #121212;
+  --text-color: #ffffff;
+  --button-bg: #FFD700;
+  --button-text: #000000;
 }
 
-#top-bar {
+header {
   display: flex;
   justify-content: space-between;
-  padding: 10px 15px;
   align-items: center;
-  background: transparent;
+  padding: 10px 20px;
 }
 
-button {
-  font-weight: bold;
-  background-color: #ffd700;
-  color: black;
+.toggle-theme, .language-switch {
   border: none;
-  border-radius: 8px;
   padding: 8px 12px;
+  border-radius: 10px;
+  background-color: var(--button-bg);
+  color: var(--button-text);
+  font-weight: bold;
   cursor: pointer;
-}
-
-#container {
-  max-width: 420px;
-  margin: 0 auto;
-  padding: 20px;
-}
-
-input, select {
-  width: 100%;
-  padding: 10px;
-  border-radius: 8px;
-  border: none;
-  margin-bottom: 12px;
-  background-color: #1e1e1e;
-  color: white;
-}
-
-body.light input,
-body.light select {
-  background-color: #f0f0f0;
-  color: black;
-}
-
-.checkbox-group {
-  margin: 15px 0;
-}
-
-#ad-title {
-  margin-top: 20px;
-  font-size: 14px;
-  font-weight: bold;
-}
-
-#ad-sub {
-  font-size: 12px;
-  opacity: 0.7;
-}
-
-#results {
-  margin-top: 20px;
-  font-weight: bold;
+  transition: background-color 0.3s;
 }
