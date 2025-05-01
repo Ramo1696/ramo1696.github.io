@@ -70,3 +70,81 @@ autoRateCheckbox.addEventListener('change', updateAutoRate);
 
 // Кнопка расчета
 calculateBtn.addEventListener('click', calculateProfit);
+// Перевод интерфейса (RU / EN)
+const translations = {
+  ru: {
+    labels: [
+      "Криптовалюта",
+      "Фиат",
+      "Сумма (в криптовалюте)",
+      "Курс покупки",
+      "Курс продажи",
+      "Комиссия покупки (%)",
+      "Комиссия продажи (%)",
+      "Автоматический курс"
+    ],
+    button: "Рассчитать",
+    ad: "Реклама от Google<br><small>Благодаря рекламе приложение остаётся бесплатным</small>"
+  },
+  en: {
+    labels: [
+      "Cryptocurrency",
+      "Fiat",
+      "Amount (in crypto)",
+      "Buy Rate",
+      "Sell Rate",
+      "Buy Fee (%)",
+      "Sell Fee (%)",
+      "Automatic Rate"
+    ],
+    button: "Calculate",
+    ad: "Google Ads<br><small>Thanks to ads, the app stays free</small>"
+  }
+};
+
+let currentLang = "ru";
+
+function applyLanguage(lang) {
+  currentLang = lang;
+  const labelElements = document.querySelectorAll("label");
+  translations[lang].labels.forEach((text, index) => {
+    if (labelElements[index]) labelElements[index].textContent = text;
+  });
+
+  // Автокурс — отдельный checkbox внутри label
+  if (labelElements[7]) {
+    labelElements[7].innerHTML = `<input type="checkbox" id="autoRate"> ${translations[lang].labels[7]}`;
+  }
+
+  // Кнопка
+  const btn = document.querySelector("button");
+  if (btn) btn.textContent = translations[lang].button;
+
+  // Реклама
+  const ad = document.querySelector(".ad-banner");
+  if (ad) ad.innerHTML = translations[lang].ad;
+}
+
+// Создание кнопки переключения языка
+document.addEventListener("DOMContentLoaded", () => {
+  const langToggle = document.createElement("button");
+  langToggle.textContent = "ENG";
+  langToggle.style.position = "fixed";
+  langToggle.style.top = "10px";
+  langToggle.style.right = "10px";
+  langToggle.style.zIndex = "1000";
+  langToggle.style.padding = "6px 10px";
+  langToggle.style.border = "none";
+  langToggle.style.background = "#444";
+  langToggle.style.color = "#fff";
+  langToggle.style.cursor = "pointer";
+  document.body.appendChild(langToggle);
+
+  langToggle.addEventListener("click", () => {
+    currentLang = currentLang === "ru" ? "en" : "ru";
+    langToggle.textContent = currentLang === "ru" ? "ENG" : "РУС";
+    applyLanguage(currentLang);
+  });
+
+  applyLanguage(currentLang); // начальный перевод
+});
