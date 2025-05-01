@@ -1,78 +1,87 @@
-const translations = {
-  ru: {
-    "Cryptocurrency": "Криптовалюта",
-    "Fiat": "Фиат",
-    "Amount (in crypto)": "Сумма (в криптовалюте)",
-    "Buy Rate": "Курс покупки",
-    "Sell Rate": "Курс продажи",
-    "Buy Fee (%)": "Комиссия покупки (%)",
-    "Sell Fee (%)": "Комиссия продажи (%)",
-    "Automatic Rate": "Автоматический курс",
-    "Calculate": "Рассчитать"
-  },
-  en: {
-    "Криптовалюта": "Cryptocurrency",
-    "Фиат": "Fiat",
-    "Сумма (в криптовалюте)": "Amount (in crypto)",
-    "Курс покупки": "Buy Rate",
-    "Курс продажи": "Sell Rate",
-    "Комиссия покупки (%)": "Buy Fee (%)",
-    "Комиссия продажи (%)": "Sell Fee (%)",
-    "Автоматический курс": "Automatic Rate",
-    "Рассчитать": "Calculate"
-  }
-};
+document.addEventListener("DOMContentLoaded", () => {
+  const themeToggle = document.getElementById("theme-toggle");
+  const langToggle = document.getElementById("lang-toggle");
+  const body = document.body;
 
-document.getElementById("theme-toggle").addEventListener("click", () => {
-  document.body.classList.toggle("dark-mode");
-  document.getElementById("theme-toggle").textContent =
-    document.body.classList.contains("dark-mode") ? "🌞" : "🌜";
-});
-
-document.getElementById("lang-toggle").addEventListener("click", () => {
-  const langBtn = document.getElementById("lang-toggle");
-  const newLang = langBtn.textContent === "Eng" ? "Рус" : "Eng";
-  langBtn.textContent = newLang;
-
-  const labels = document.querySelectorAll("label, button");
-
-  labels.forEach(el => {
-    const translation =
-      translations[newLang === "Eng" ? "en" : "ru"][el.textContent.trim()];
-    if (translation) el.textContent = translation;
+  // Theme toggle
+  themeToggle.addEventListener("click", () => {
+    const isDark = body.classList.contains("dark");
+    body.classList.toggle("dark", !isDark);
+    body.classList.toggle("light", isDark);
+    themeToggle.textContent = isDark ? "🌙" : "☀️";
   });
-});
 
-document.getElementById("calculate-button").addEventListener("click", () => {
-  const amount = parseFloat(document.getElementById("amount").value);
-  const buy = parseFloat(document.getElementById("buy-rate").value);
-  const sell = parseFloat(document.getElementById("sell-rate").value);
-  const buyFee = parseFloat(document.getElementById("buy-fee").value) || 0;
-  const sellFee = parseFloat(document.getElementById("sell-fee").value) || 0;
+  // Language toggle
+  const translations = {
+    ru: {
+      "crypto-label": "Криптовалюта",
+      "fiat-label": "Фиат",
+      "amount-label": "Сумма (в криптовалюте)",
+      "buy-rate-label": "Курс покупки",
+      "sell-rate-label": "Курс продажи",
+      "buy-fee-label": "Комиссия покупки (%)",
+      "sell-fee-label": "Комиссия продажи (%)",
+      "auto-rate-label": "Автоматический курс",
+      "calculate-button": "Рассчитать"
+    },
+    en: {
+      "crypto-label": "Cryptocurrency",
+      "fiat-label": "Fiat",
+      "amount-label": "Amount (in crypto)",
+      "buy-rate-label": "Buy Rate",
+      "sell-rate-label": "Sell Rate",
+      "buy-fee-label": "Buy Fee (%)",
+      "sell-fee-label": "Sell Fee (%)",
+      "auto-rate-label": "Automatic Rate",
+      "calculate-button": "Calculate"
+    }
+  };
 
-  if (isNaN(amount) || isNaN(buy) || isNaN(sell)) return;
+  let currentLang = "ru";
+  langToggle.addEventListener("click", () => {
+    currentLang = currentLang === "ru" ? "en" : "ru";
+    langToggle.textContent = currentLang === "ru" ? "Eng" : "Рус";
+    for (const id in translations[currentLang]) {
+      const element = document.getElementById(id);
+      if (element) element.textContent = translations[currentLang][id];
+    }
+  });
 
-  const spent = amount * buy * (1 + buyFee / 100);
-  const received = amount * sell * (1 - sellFee / 100);
-  const profit = received - spent;
+  // Calculate
+  document.getElementById("calculate-button").addEventListener("click", () => {
+    const amount = parseFloat(document.getElementById("amount").value);
+    const buyRate = parseFloat(document.getElementById("buy-rate").value);
+    const sellRate = parseFloat(document.getElementById("sell-rate").value);
+    const buyFee = parseFloat(document.getElementById("buy-fee").value) || 0;
+    const sellFee = parseFloat(document.getElementById("sell-fee").value) || 0;
 
-  document.getElementById("results").innerHTML = `
-    <p>Потрачено: ${spent.toFixed(2)}</p>
-    <p>Получено: ${received.toFixed(2)}</p>
-    <p>Чистая прибыль: ${profit.toFixed(2)}</p>
-  `;
-});
+    if (isNaN(amount) || isNaN(buyRate) || isNaN(sellRate)) return;
 
-document.getElementById("auto-rate").addEventListener("change", async (e) => {
-  if (!e.target.checked) return;
+    const spent = amount * buyRate * (1 + buyFee / 100);
+    const received = amount * sellRate * (1 - sellFee / 100);
+    const profit = received - spent;
 
-  const crypto = document.getElementById("crypto").value;
-  const fiat = document.getElementById("fiat").value;
+    document.getElementById("results").innerHTML = `
+      Потрачено: ${spent.toFixed(2)}<br>
+      Получено: ${received.toFixed(2)}<br>
+      Чистая прибыль: ${profit.toFixed(2)}
+    `;
+  });
 
-  const res = await fetch(`https://api.coingecko.com/api/v3/simple/price?ids=${crypto}&vs_currencies=${fiat}`);
-  const data = await res.json();
-  const rate = data[crypto][fiat];
+  // Auto rate
+  document.getElementById("auto-rate").addEventListener("change", async (e) => {
+    if (!e.target.checked) return;
+    const crypto = document.getElementById("crypto").value;
+    const fiat = document.getElementById("fiat").value;
 
-  document.getElementById("buy-rate").value = rate;
-  document.getElementById("sell-rate").value = rate;
+    try {
+      const res = await fetch(`https://api.coingecko.com/api/v3/simple/price?ids=${crypto}&vs_currencies=${fiat}`);
+      const data = await res.json();
+      const rate = data[crypto][fiat];
+      document.getElementById("buy-rate").value = rate;
+      document.getElementById("sell-rate").value = rate;
+    } catch (err) {
+      alert("Ошибка загрузки курса");
+    }
+  });
 });
