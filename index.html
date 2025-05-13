@@ -1,5 +1,4 @@
-# Сохраним исправленный HTML-код с вставленным скриптом Adsterra в файл
-updated_html = """<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="ru">
 <head>
   <meta charset="UTF-8" />
@@ -87,10 +86,3 @@ updated_html = """<!DOCTYPE html>
   gtag('js', new Date());
   gtag('config', 'G-XE5ZMJ4SQ3');
 </script>
-"""
-
-file_path = "/mnt/data/index_with_adsterra.html"
-with open(file_path, "w", encoding="utf-8") as f:
-    f.write(updated_html)
-
-file_path
