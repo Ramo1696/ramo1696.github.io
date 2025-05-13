@@ -1,5 +1,5 @@
-
-<!DOCTYPE html>
+# Сохраним исправленный HTML-код с вставленным скриптом Adsterra в файл
+updated_html = """<!DOCTYPE html>
 <html lang="ru">
 <head>
   <meta charset="UTF-8" />
@@ -63,7 +63,8 @@
 
     <button onclick="calculateProfit()">Рассчитать</button>
 
-    <div class="ad-banner">Реклама от Google<br><small>Благодаря рекламе приложение остаётся бесплатным</small></div>
+    <!-- Adsterra Реклама -->
+    <script type="text/javascript" src="//pl26636286.profitableratecpm.com/52/5c/06/525c06e7b5843e9b3d3fa5921b5e38ae.js"></script>
 
     <div id="results" class="results-box">
       <p id="buyRateResult"></p>
@@ -77,12 +78,19 @@
   </div>
 </body>
 </html>
+
 <!-- Google tag (gtag.js) -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-XE5ZMJ4SQ3"></script>
 <script>
   window.dataLayer = window.dataLayer || [];
   function gtag(){dataLayer.push(arguments);}
   gtag('js', new Date());
-
   gtag('config', 'G-XE5ZMJ4SQ3');
 </script>
+"""
+
+file_path = "/mnt/data/index_with_adsterra.html"
+with open(file_path, "w", encoding="utf-8") as f:
+    f.write(updated_html)
+
+file_path
