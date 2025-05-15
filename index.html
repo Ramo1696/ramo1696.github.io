@@ -11,8 +11,8 @@
   <script>
     if ('serviceWorker' in navigator) {
       navigator.serviceWorker.register('service-worker.js')
-        .then(reg => console.log('Service Worker registered', reg))
-        .catch(err => console.error('Service Worker registration failed', err));
+        .then(reg => console.log('✅ Service Worker registered', reg))
+        .catch(err => console.error('❌ Service Worker registration failed', err));
     }
   </script>
 </head>
@@ -83,17 +83,27 @@
     </div>
 
     <!-- Adsterra Banner -->
-    <div style="text-align: center; margin-top: 20px;">
+    <div id="ad-banner" style="text-align: center; margin-top: 20px;">
       <script type="text/javascript">
-        atOptions = {
-          'key' : 'df07925319c8e4c444520d15490dd3f5',
-          'format' : 'iframe',
-          'height' : 250,
-          'width' : 300,
-          'params' : {}
-        };
+        try {
+          atOptions = {
+            'key' : 'df07925319c8e4c444520d15490dd3f5',
+            'format' : 'iframe',
+            'height' : 250,
+            'width' : 300,
+            'params' : {}
+          };
+          var adScript = document.createElement('script');
+          adScript.src = '//www.highperformanceformat.com/df07925319c8e4c444520d15490dd3f5/invoke.js';
+          adScript.async = true;
+          document.getElementById('ad-banner').appendChild(adScript);
+        } catch (e) {
+          console.warn('🚫 Ошибка загрузки рекламы:', e);
+        }
       </script>
-      <script type="text/javascript" src="//www.highperformanceformat.com/df07925319c8e4c444520d15490dd3f5/invoke.js"></script>
+      <noscript>
+        <div style="color: white;">Реклама недоступна (включите JavaScript)</div>
+      </noscript>
     </div>
 
     <!-- Google Analytics -->
