@@ -5,12 +5,12 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>P2P Profit</title>
   <link rel="stylesheet" href="style.css" />
+  <link rel="manifest" href="manifest.json" />
   <script defer src="exchange-rate.js"></script>
 
-  <!-- Сюда перемещён правильный скрипт регистрации Service Worker -->
   <script>
     if ('serviceWorker' in navigator) {
-      navigator.serviceWorker.register('/service-worker.js')
+      navigator.serviceWorker.register('service-worker.js')
         .then(reg => console.log('Service Worker registered', reg))
         .catch(err => console.error('Service Worker registration failed', err));
     }
@@ -96,7 +96,7 @@
       <script type="text/javascript" src="//www.highperformanceformat.com/df07925319c8e4c444520d15490dd3f5/invoke.js"></script>
     </div>
 
-    <!-- Google tag (gtag.js) -->
+    <!-- Google Analytics -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-XE5ZMJ4SQ3"></script>
     <script>
       window.dataLayer = window.dataLayer || [];
