@@ -6,7 +6,13 @@
   <title>P2P Profit</title>
   <link rel="stylesheet" href="style.css" />
   <script defer src="exchange-rate.js"></script>
-</head>
+</head><script>
+  if ('serviceWorker' in navigator) {
+    navigator.serviceWorker.register('/service-worker.js')
+      .then(reg => console.log('Service Worker registered', reg))
+      .catch(err => console.error('Service Worker registration failed', err));
+  }
+</script>
 <body>
   <div id="container">
     <h1>P2P Profit</h1>
