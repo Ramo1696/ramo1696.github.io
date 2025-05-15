@@ -1,27 +1,15 @@
 {
   "name": "P2P Profit",
-  "short_name": "P2P",
   "theme_color": "#000000",
   "background_color": "#000000",
-  "start_url": "/index.html",
-  "scope": "/",
-  "display": "standalone",
+  "short_name": "P2P",
   "id": "/",
   "description": "P2P Профит — это простой калькулятор для отслеживания вашей прибыли от торговли.",
-  "lang": "ru",
-  "categories": ["finance"],
-  "icons": [
-    {
-      "src": "android-launchericon-512-512.png",
-      "sizes": "512x512",
-      "type": "image/png",
-      "purpose": "any"
-    },
-    {
-      "src": "android-launchericon-512-512.png",
-      "sizes": "512x512",
-      "type": "image/png",
-      "purpose": "maskable"
-    }
+  "categories": [
+    "finance"
+  ],
+  "display_override": [
+    "window-controls-overlay",
+    "standalone"
   ]
 }
