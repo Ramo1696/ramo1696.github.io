@@ -82,17 +82,19 @@
       <p id="netProfit"></p>
     </div>
 
-    <!-- Adsterra Banner (надежная загрузка) -->
-    <div id="adsterra-banner" style="text-align: center; margin-top: 20px;"></div>
-    <script>
-      document.addEventListener('DOMContentLoaded', function () {
-        const s = document.createElement('script');
-        s.type = 'text/javascript';
-        s.src = '//www.highperformanceformat.com/df07925319c8e4c444520d15490dd3f5/invoke.js';
-        s.async = true;
-        document.getElementById('adsterra-banner').appendChild(s);
-      });
-    </script>
+    <!-- Adsterra Banner (рабочий блок) -->
+    <div style="text-align: center; margin-top: 20px;">
+      <script type="text/javascript">
+        var atOptions = {
+          'key': 'df07925319c8e4c444520d15490dd3f5',
+          'format': 'iframe',
+          'height': 250,
+          'width': 300,
+          'params': {}
+        };
+      </script>
+      <script type="text/javascript" src="//www.highperformanceformat.com/df07925319c8e4c444520d15490dd3f5/invoke.js"></script>
+    </div>
 
     <!-- Google Analytics -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-XE5ZMJ4SQ3"></script>
