@@ -1,4 +1,3 @@
-
 function calculateProfit() {
   const crypto = document.getElementById("crypto").value;
   const fiat = document.getElementById("fiat").value;
@@ -39,10 +38,15 @@ document.addEventListener("DOMContentLoaded", () => {
         const response = await fetch(`https://api.coingecko.com/api/v3/simple/price?ids=${crypto}&vs_currencies=${fiat}`);
         const data = await response.json();
         const rate = data[crypto][fiat];
-        document.getElementById("buyRate").value = rate;
-        document.getElementById("sellRate").value = rate;
+        if (rate) {
+          document.getElementById("buyRate").value = rate;
+          document.getElementById("sellRate").value = rate;
+        } else {
+          alert("Exchange rate not found.");
+        }
       } catch (error) {
-        console.error("Error fetching exchange rate:", error);
+        alert("Error fetching exchange rate. Please try again later.");
+        console.error("Exchange rate fetch error:", error);
       }
     }
   });
