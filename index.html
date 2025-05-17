@@ -4,7 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>P2P Profit</title>
-  <link rel="stylesheet" href="style.css" /> 
+  <link rel="stylesheet" href="style.css" />
   <script defer src="exchange-rate.js"></script>
 </head>
 <body>
@@ -71,6 +71,50 @@
       <p id="received"></p>
       <p id="netProfit"></p>
     </div>
+
+    <!-- Блок поддержки -->
+    <div style="text-align: center; margin-top: 40px;">
+      <h2>Поддержать проект</h2>
+      <p>Если вам полезен этот калькулятор, вы можете поддержать разработку:</p>
+
+      <div style="margin-bottom: 20px;">
+        <strong>USDT (TRC20):</strong><br>
+        <input type="text" id="usdtTRC" value="TCqqq2rpWGyL4pkMGYPL3iNGArvjdq2rEK" readonly style="width: 80%; text-align: center;">
+        <button onclick="copyToClipboard('usdtTRC')">Скопировать</button>
+      </div>
+
+      <div style="margin-bottom: 20px;">
+        <strong>USDT (TON):</strong><br>
+        <input type="text" id="usdtTON" value="UQCQ6nmkGiURnt0cxm2uMDrQOwGvN4Wa0B3H--pTvqBwQ6Vh" readonly style="width: 80%; text-align: center;">
+        <button onclick="copyToClipboard('usdtTON')">Скопировать</button>
+      </div>
+
+      <div style="margin-bottom: 20px;">
+        <strong>TBC Bank:</strong><br>
+        <input type="text" id="tbcBank" value="GE65TB7948645061100007" readonly style="width: 80%; text-align: center;">
+        <button onclick="copyToClipboard('tbcBank')">Скопировать</button>
+      </div>
+
+      <div style="margin-bottom: 20px;">
+        <strong>BOG Bank:</strong><br>
+        <input type="text" id="bogBank" value="GE22BG0000000911328800" readonly style="width: 80%; text-align: center;">
+        <button onclick="copyToClipboard('bogBank')">Скопировать</button>
+      </div>
+
+      <p id="copyStatus" style="color: green; font-weight: bold;"></p>
+    </div>
+
+    <script>
+      function copyToClipboard(id) {
+        const input = document.getElementById(id);
+        input.select();
+        input.setSelectionRange(0, 99999);
+        document.execCommand("copy");
+        const status = document.getElementById("copyStatus");
+        status.textContent = "Скопировано!";
+        setTimeout(() => { status.textContent = ""; }, 2000);
+      }
+    </script>
   </div>
 </body>
 </html>
