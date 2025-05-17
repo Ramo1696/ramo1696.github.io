@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="ru">
+<html lang="en">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -22,7 +22,7 @@
     <h1>P2P Profit</h1>
 
     <div class="form-group">
-      <label>Криптовалюта</label>
+      <label>Cryptocurrency</label>
       <select id="crypto">
         <option value="tether">USDT</option>
         <option value="usd-coin">USDC</option>
@@ -32,7 +32,7 @@
     </div>
 
     <div class="form-group">
-      <label>Фиат</label>
+      <label>Fiat Currency</label>
       <select id="fiat">
         <option value="gel">GEL</option>
         <option value="usd">USD</option>
@@ -42,35 +42,35 @@
     </div>
 
     <div class="form-group">
-      <label>Сумма (в криптовалюте)</label>
-      <input type="number" id="amount" placeholder="например, 1000" />
+      <label>Amount (in crypto)</label>
+      <input type="number" id="amount" placeholder="e.g. 1000" />
     </div>
 
     <div class="form-group">
-      <label>Курс покупки</label>
+      <label>Buy rate</label>
       <input type="number" id="buyRate" step="any" />
     </div>
 
     <div class="form-group">
-      <label>Курс продажи</label>
+      <label>Sell rate</label>
       <input type="number" id="sellRate" step="any" />
     </div>
 
     <div class="form-group">
-      <label>Комиссия покупки (%)</label>
+      <label>Buy fee (%)</label>
       <input type="number" id="buyFee" value="0" />
     </div>
 
     <div class="form-group">
-      <label>Комиссия продажи (%)</label>
+      <label>Sell fee (%)</label>
       <input type="number" id="sellFee" value="0" />
     </div>
 
     <div class="form-group auto-rate">
-      <label><input type="checkbox" id="autoRate" /> Автоматический курс</label>
+      <label><input type="checkbox" id="autoRate" /> Automatic rate</label>
     </div>
 
-    <button onclick="calculateProfit()">Рассчитать</button>
+    <button onclick="calculateProfit()">Calculate</button>
 
     <div id="results" class="results-box">
       <p id="buyRateResult"></p>
@@ -83,7 +83,6 @@
     </div>
   </div>
 
-  <!-- Google Analytics -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-XE5ZMJ4SQ3"></script>
   <script>
     window.dataLayer = window.dataLayer || [];
