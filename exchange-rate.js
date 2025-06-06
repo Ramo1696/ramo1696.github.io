@@ -1,1 +1,192 @@
-function _0x4deb(_0x199540,_0x3d1c06){const _0x5970b8=_0x5970();return _0x4deb=function(_0x4deb1f,_0xc79a9c){_0x4deb1f=_0x4deb1f-0x75;let _0x58aa15=_0x5970b8[_0x4deb1f];return _0x58aa15;},_0x4deb(_0x199540,_0x3d1c06);}const _0x45f501=_0x4deb;(function(_0x386e9b,_0x144f38){const _0x15a541=_0x4deb,_0x1f7520=_0x386e9b();while(!![]){try{const _0x36d19e=parseInt(_0x15a541(0x8d))/0x1*(parseInt(_0x15a541(0x94))/0x2)+parseInt(_0x15a541(0x8a))/0x3*(parseInt(_0x15a541(0x89))/0x4)+parseInt(_0x15a541(0x84))/0x5*(-parseInt(_0x15a541(0x90))/0x6)+-parseInt(_0x15a541(0x7f))/0x7*(-parseInt(_0x15a541(0x7b))/0x8)+-parseInt(_0x15a541(0x9a))/0x9*(parseInt(_0x15a541(0x93))/0xa)+-parseInt(_0x15a541(0x92))/0xb*(-parseInt(_0x15a541(0x75))/0xc)+-parseInt(_0x15a541(0x9f))/0xd;if(_0x36d19e===_0x144f38)break;else _0x1f7520['push'](_0x1f7520['shift']());}catch(_0x71fe58){_0x1f7520['push'](_0x1f7520['shift']());}}}(_0x5970,0x94d46));const cryptoSelect=document[_0x45f501(0x80)](_0x45f501(0x91)),fiatSelect=document[_0x45f501(0x80)](_0x45f501(0x78)),amountInput=document[_0x45f501(0x80)](_0x45f501(0x79)),buyRateInput=document[_0x45f501(0x80)](_0x45f501(0x8e)),sellRateInput=document['getElementById'](_0x45f501(0x85)),buyFeeInput=document[_0x45f501(0x80)](_0x45f501(0x82)),sellFeeInput=document[_0x45f501(0x80)](_0x45f501(0x98)),autoRateCheckbox=document[_0x45f501(0x80)](_0x45f501(0x7a)),calculateBtn=document[_0x45f501(0x88)](_0x45f501(0x9b)),resultsBox=document[_0x45f501(0x88)](_0x45f501(0x9e));async function fetchExchangeRate(_0x373105,_0x4fc146){const _0x3bf267=_0x45f501;try{const _0x2ec56b=await fetch(_0x3bf267(0x95)+_0x373105+_0x3bf267(0x7d)+_0x4fc146),_0x3631af=await _0x2ec56b['json']();return _0x3631af[_0x373105][_0x4fc146];}catch(_0x57b25b){return console[_0x3bf267(0x9d)]('Ошибка\x20при\x20получении\x20курса:',_0x57b25b),null;}}function updateAutoRate(){const _0x3c33e7=_0x45f501;if(autoRateCheckbox[_0x3c33e7(0x97)]){const _0x236a05=cryptoSelect[_0x3c33e7(0x7c)],_0x529b34=fiatSelect['value'];fetchExchangeRate(_0x236a05,_0x529b34)[_0x3c33e7(0x7e)](_0x2a0005=>{const _0x14c101=_0x3c33e7;_0x2a0005&&(buyRateInput[_0x14c101(0x7c)]=_0x2a0005,sellRateInput[_0x14c101(0x7c)]=_0x2a0005);});}}function calculateProfit(){const _0x3cfa09=_0x45f501,_0x2da662=parseFloat(amountInput[_0x3cfa09(0x7c)]),_0x2c6199=parseFloat(buyRateInput['value']),_0x18dee7=parseFloat(sellRateInput[_0x3cfa09(0x7c)]),_0x4c7f79=parseFloat(buyFeeInput[_0x3cfa09(0x7c)])||0x0,_0x3fa80b=parseFloat(sellFeeInput[_0x3cfa09(0x7c)])||0x0;if(isNaN(_0x2da662)||isNaN(_0x2c6199)||isNaN(_0x18dee7)){resultsBox[_0x3cfa09(0x8f)]=_0x3cfa09(0x96);return;}const _0xf158db=_0x2da662*_0x2c6199*(0x1+_0x4c7f79/0x64),_0x260fe7=_0x2da662*_0x18dee7*(0x1-_0x3fa80b/0x64),_0x8c5571=(_0x18dee7-_0x2c6199)/_0x2c6199*0x64,_0x42e964=(_0x260fe7-_0xf158db)/_0xf158db*0x64,_0x23707f=_0x260fe7-_0xf158db;resultsBox[_0x3cfa09(0x8f)]=_0x3cfa09(0x99)+_0x2c6199[_0x3cfa09(0x8c)](0x2)+_0x3cfa09(0x77)+_0x18dee7[_0x3cfa09(0x8c)](0x2)+_0x3cfa09(0x76)+_0x8c5571[_0x3cfa09(0x8c)](0x2)+_0x3cfa09(0x8b)+_0x42e964[_0x3cfa09(0x8c)](0x2)+_0x3cfa09(0x81)+_0xf158db[_0x3cfa09(0x8c)](0x2)+_0x3cfa09(0x83)+_0x260fe7[_0x3cfa09(0x8c)](0x2)+'</span></p>\x0a\x20\x20\x20\x20<p>Чистая\x20прибыль:\x20<span>'+_0x23707f[_0x3cfa09(0x8c)](0x2)+_0x3cfa09(0x87);}function _0x5970(){const _0x2d7192=['2666012tybpsX','3DvGwqL','%</span></p>\x0a\x20\x20\x20\x20<p>Спред\x20с\x20комиссией:\x20<span>','toFixed','337llsMHC','buyRate','innerHTML','26454uMsmHO','crypto','33sxdWjC','10357990GNJxHY','3812luombB','https://api.coingecko.com/api/v3/simple/price?ids=','<p>Пожалуйста,\x20заполните\x20все\x20поля\x20правильно.</p>','checked','sellFee','\x0a\x20\x20\x20\x20<p>Курс\x20покупки:\x20<span>','9QkgSrr','button','change','error','.results-box','11586393NKfZaz','3750612aoBrJS','</span></p>\x0a\x20\x20\x20\x20<p>Спред\x20без\x20комиссии:\x20<span>','</span></p>\x0a\x20\x20\x20\x20<p>Курс\x20продажи:\x20<span>','fiat','amount','autoRate','8PvQpOv','value','&vs_currencies=','then','3296699fykUlv','getElementById','%</span></p>\x0a\x20\x20\x20\x20<p>Потрачено:\x20<span>','buyFee','</span></p>\x0a\x20\x20\x20\x20<p>Получено:\x20<span>','205IXEnyF','sellRate','addEventListener','</span></p>\x0a\x20\x20','querySelector'];_0x5970=function(){return _0x2d7192;};return _0x5970();}cryptoSelect[_0x45f501(0x86)](_0x45f501(0x9c),updateAutoRate),fiatSelect[_0x45f501(0x86)](_0x45f501(0x9c),updateAutoRate),autoRateCheckbox[_0x45f501(0x86)](_0x45f501(0x9c),updateAutoRate),calculateBtn['addEventListener']('click',calculateProfit);
+const cryptoSelect = document.getElementById('crypto');
+const fiatSelect = document.getElementById('fiat');
+const amountInput = document.getElementById('amount');
+const buyRateInput = document.getElementById('buyRate');
+const sellRateInput = document.getElementById('sellRate');
+const buyFeeInput = document.getElementById('buyFee');
+const sellFeeInput = document.getElementById('sellFee');
+let autoRateCheckbox = document.getElementById('autoRate');
+const calculateBtn = document.getElementsByTagName('button')[1];
+const resultsBox = document.querySelector('.results-box');
+
+const translations = {
+  ru: {
+    buyRate: "Курс покупки:",
+    sellRate: "Курс продажи:",
+    spreadNoFee: "Спред без комиссии:",
+    spreadWithFee: "Спред с комиссией:",
+    spent: "Потрачено:",
+    received: "Получено:",
+    netProfit: "Чистая прибыль:",
+    error: "Пожалуйста, заполните все поля правильно.",
+    crypto: "Криптовалюта",
+    fiat: "Фиат",
+    amount: "Сумма (в криптовалюте)",
+    buy: "Курс покупки",
+    sell: "Курс продажи",
+    buyFee: "Комиссия покупки (%)",
+    sellFee: "Комиссия продажи (%)",
+    auto: "Автоматический курс",
+    calculate: "Рассчитать"
+  },
+  en: {
+    buyRate: "Buy Rate:",
+    sellRate: "Sell Rate:",
+    spreadNoFee: "Spread (no fee):",
+    spreadWithFee: "Spread (with fee):",
+    spent: "Spent:",
+    received: "Received:",
+    netProfit: "Net Profit:",
+    error: "Please fill in all fields correctly.",
+    crypto: "Cryptocurrency",
+    fiat: "Fiat",
+    amount: "Amount (in crypto)",
+    buy: "Buy Rate",
+    sell: "Sell Rate",
+    buyFee: "Buy Fee (%)",
+    sellFee: "Sell Fee (%)",
+    auto: "Auto Rate",
+    calculate: "Calculate"
+  }
+};
+
+let currentLang = "ru";
+
+function switchLanguage() {
+  currentLang = currentLang === "ru" ? "en" : "ru";
+  document.getElementById("language-toggle").textContent = currentLang === "ru" ? "EN" : "RU";
+  updateLanguage();
+}
+
+function updateLanguage() {
+  const t = translations[currentLang];
+  const labels = document.getElementsByTagName("label");
+
+  labels[0].textContent = t.crypto;
+  labels[1].textContent = t.fiat;
+  labels[2].textContent = t.amount;
+  labels[3].textContent = t.buy;
+  labels[4].textContent = t.sell;
+  labels[5].textContent = t.buyFee;
+  labels[6].textContent = t.sellFee;
+  labels[7].innerHTML = `<input type="checkbox" id="autoRate" /> ${t.auto}`;
+
+  document.getElementsByTagName("button")[1].textContent = t.calculate;
+}
+
+async function fetchExchangeRate(crypto, fiat) {
+  try {
+    const response = await fetch(`https://api.coingecko.com/api/v3/simple/price?ids=${crypto}&vs_currencies=${fiat}&include_24hr_change=true`);
+    const data = await response.json();
+    return {
+      rate: data[crypto][fiat],
+      change: data[crypto][`${fiat}_24h_change`]
+    };
+  } catch (error) {
+    console.error('Ошибка при получении курса:', error);
+    return null;
+  }
+}
+
+function updateAutoRate() {
+  if (document.getElementById('autoRate').checked) {
+    const crypto = cryptoSelect.value;
+    const fiat = fiatSelect.value;
+
+    fetchExchangeRate(crypto, fiat).then(data => {
+      if (data) {
+        buyRateInput.value = data.rate;
+        sellRateInput.value = data.rate;
+
+        const changeElement = document.getElementById("changeIndicator");
+        if (changeElement) {
+          changeElement.innerHTML = `Изменение за 24ч: <strong>${data.change.toFixed(2)}%</strong>`;
+        }
+      }
+    });
+  }
+}
+
+function calculateProfit() {
+  const t = translations[currentLang];
+  const amount = parseFloat(amountInput.value);
+  const buyRate = parseFloat(buyRateInput.value);
+  const sellRate = parseFloat(sellRateInput.value);
+  const buyFee = parseFloat(buyFeeInput.value) || 0;
+  const sellFee = parseFloat(sellFeeInput.value) || 0;
+
+  if (isNaN(amount) || isNaN(buyRate) || isNaN(sellRate)) {
+    resultsBox.innerHTML = `<p style='color: red;'>${t.error}</p>`;
+    return;
+  }
+
+  const spent = amount * buyRate * (1 + buyFee / 100);
+  const received = amount * sellRate * (1 - sellFee / 100);
+  const spreadNoFee = ((sellRate - buyRate) / buyRate) * 100;
+  const spreadWithFee = ((received - spent) / spent) * 100;
+  const netProfit = received - spent;
+
+  resultsBox.innerHTML = `
+    <p>${t.buyRate} <span>${buyRate.toFixed(2)}</span></p>
+    <p>${t.sellRate} <span>${sellRate.toFixed(2)}</span></p>
+    <p>${t.spreadNoFee} <span>${spreadNoFee.toFixed(2)}%</span></p>
+    <p>${t.spreadWithFee} <span>${spreadWithFee.toFixed(2)}%</span></p>
+    <p>${t.spent} <span>${spent.toFixed(2)}</span></p>
+    <p>${t.received} <span>${received.toFixed(2)}</span></p>
+    <p>${t.netProfit} <span>${netProfit.toFixed(2)}</span></p>
+  `;
+}
+
+function populateDropdowns() {
+  const cryptos = [
+    { id: 'tether', name: 'USDT' },
+    { id: 'usd-coin', name: 'USDC' },
+    { id: 'bitcoin', name: 'BTC' },
+    { id: 'ethereum', name: 'ETH' },
+    { id: 'the-open-network', name: 'TON' }
+  ];
+
+  const fiats = [
+    { id: 'usd', name: 'USD' },
+    { id: 'eur', name: 'EUR' },
+    { id: 'rub', name: 'RUB' },
+    { id: 'gel', name: 'GEL' },
+    { id: 'ngn', name: 'NGN' },
+    { id: 'try', name: 'TRY' }
+  ];
+
+  cryptos.forEach(crypto => {
+    const option = document.createElement("option");
+    option.value = crypto.id;
+    option.text = crypto.name;
+    cryptoSelect.appendChild(option);
+  });
+
+  fiats.forEach(fiat => {
+    const option = document.createElement("option");
+    option.value = fiat.id;
+    option.text = fiat.name;
+    fiatSelect.appendChild(option);
+  });
+
+  cryptoSelect.value = 'tether';
+  fiatSelect.value = 'gel';
+}
+
+document.addEventListener("DOMContentLoaded", () => {
+  populateDropdowns();
+  updateLanguage();
+  updateAutoRate();
+
+  cryptoSelect.addEventListener('change', updateAutoRate);
+  fiatSelect.addEventListener('change', updateAutoRate);
+
+  document.body.addEventListener('change', (e) => {
+    if (e.target.id === 'autoRate') {
+      autoRateCheckbox = document.getElementById('autoRate');
+      updateAutoRate();
+    }
+  });
+
+  calculateBtn.addEventListener('click', calculateProfit);
+});
