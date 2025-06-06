@@ -3,21 +3,18 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>P2P Terminal</title>
+  <title>P2P Profit — Веб</title>
   <link rel="stylesheet" href="style.css" />
   <script defer src="exchange-rate.js"></script>
 </head>
 <body>
-  <header>
-    <div class="container">
-      <h1>P2P Terminal</h1>
+  <div class="container">
+    <header class="header">
+      <h1>P2P Profit</h1>
       <button id="language-toggle" onclick="switchLanguage()">EN</button>
-    </div>
-  </header>
+    </header>
 
-  <main class="container">
-    <!-- Калькулятор -->
-    <section class="panel">
+    <section class="calculator card">
       <h2>Калькулятор прибыли</h2>
 
       <div class="form-grid">
@@ -30,16 +27,16 @@
           <select id="fiat"></select>
         </div>
         <div class="form-group">
-          <label id="label-amount">Сумма (в криптовалюте)</label>
+          <label id="label-amount">Сумма</label>
           <input type="number" id="amount" placeholder="например, 1000" />
         </div>
         <div class="form-group">
           <label id="label-buy">Курс покупки</label>
-          <input type="number" id="buyRate" step="any" />
+          <input type="number" id="buyRate" />
         </div>
         <div class="form-group">
           <label id="label-sell">Курс продажи</label>
-          <input type="number" id="sellRate" step="any" />
+          <input type="number" id="sellRate" />
         </div>
         <div class="form-group">
           <label id="label-buyFee">Комиссия покупки (%)</label>
@@ -49,20 +46,16 @@
           <label id="label-sellFee">Комиссия продажи (%)</label>
           <input type="number" id="sellFee" value="0" />
         </div>
-        <div class="form-group full-width">
-          <label id="label-auto">
-            <input type="checkbox" id="autoRate" /> Автоматический курс
-          </label>
+        <div class="form-group checkbox">
+          <label><input type="checkbox" id="autoRate" /> Автоматический курс</label>
         </div>
       </div>
 
       <button class="calculate-btn" onclick="calculateProfit()">Рассчитать</button>
-
       <div id="results" class="results-box"></div>
     </section>
 
-    <!-- Курсы -->
-    <section class="panel">
+    <section class="rates card">
       <h2>Сравнение курсов P2P</h2>
       <table>
         <thead>
@@ -74,12 +67,12 @@
         </thead>
         <tbody>
           <tr>
-            <td>Telegram Market</td>
+            <td>Telegram</td>
             <td>2.75 GEL</td>
             <td>2.82 GEL</td>
           </tr>
           <tr>
-            <td>Binance P2P</td>
+            <td>Binance</td>
             <td>2.74 GEL</td>
             <td>2.81 GEL</td>
           </tr>
@@ -91,7 +84,7 @@
         </tbody>
       </table>
     </section>
-  </main>
+  </div>
 </body>
 </html>
 
