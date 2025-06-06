@@ -19,4 +19,68 @@
 </head>
 <body>
 <div id="container">
-  <!-- Остальной код без изменений -->
+
+  <!-- Заголовок и кнопка языка -->
+  <div class="header">
+    <h1 id="title">P2P Profit</h1>
+    <div class="lang-btn-wrapper">
+      <button id="language-toggle" onclick="switchLanguage()">EN</button>
+    </div>
+  </div>
+
+  <div class="form-group">
+    <label id="label-crypto">Криптовалюта</label>
+    <select id="crypto"></select>
+  </div>
+
+  <div class="form-group">
+    <label id="label-fiat">Фиат</label>
+    <select id="fiat"></select>
+  </div>
+
+  <div class="form-group">
+    <label id="label-amount">Сумма (в криптовалюте)</label>
+    <input type="number" id="amount" placeholder="например, 1000" />
+  </div>
+
+  <div class="form-group">
+    <label id="label-buy">Курс покупки</label>
+    <input type="number" id="buyRate" step="any" />
+  </div>
+
+  <div class="form-group">
+    <label id="label-sell">Курс продажи</label>
+    <input type="number" id="sellRate" step="any" />
+  </div>
+
+  <div class="form-group">
+    <label id="label-buyFee">Комиссия покупки (%)</label>
+    <input type="number" id="buyFee" value="0" />
+  </div>
+
+  <div class="form-group">
+    <label id="label-sellFee">Комиссия продажи (%)</label>
+    <input type="number" id="sellFee" value="0" />
+  </div>
+
+  <div class="form-group auto-rate">
+    <label id="label-auto">
+      <input type="checkbox" id="autoRate" /> Автоматический курс
+    </label>
+  </div>
+
+  <button onclick="calculateProfit()">Рассчитать</button>
+
+  <div id="results" class="results-box">
+    <p id="buyRateResult"></p>
+    <p id="sellRateResult"></p>
+    <p id="spreadNoFee"></p>
+    <p id="spreadWithFee"></p>
+    <p id="spent"></p>
+    <p id="received"></p>
+    <p id="netProfit"></p>
+  </div>
+
+</div>
+</body>
+</html>
